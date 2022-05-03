@@ -12,6 +12,10 @@ namespace DWBooking.Model
         public string Phone { get; set; }
         public string Email { get; set; }
 
+        public Person()
+        {
+            
+        }
         public Person(int id, string name, string phone, string email)
         {
             ID = id;

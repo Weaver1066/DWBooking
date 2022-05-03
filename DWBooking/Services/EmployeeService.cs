@@ -21,15 +21,15 @@ namespace DWBooking.Services
         }
         // Returnere listen af employees
 
-        //public Employee GetEmployee(string employeeId)
-        //{
-        //    foreach (Employee employee in Employees)
-        //    {
-        //        if (employee.Id == employeeId) return employee;
-        //    }
+        public Employee GetEmployee(int employeeId)
+        {
+            foreach (Employee employee in Employees)
+            {
+                if (employee.ID == employeeId) return employee;
+            }
 
-        //    return null;
-        //}
+            return null;
+        }
 
 
     }

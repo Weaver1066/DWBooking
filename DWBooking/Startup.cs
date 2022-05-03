@@ -1,3 +1,5 @@
+using DWBooking.Model;
+using DWBooking.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,31 @@ namespace DWBooking
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddDbContext<DWBookingDbContext>();
+
+            //Setup of services for Clients
+            services.AddSingleton<GenericDbService<Client>, GenericDbService<Client>>();
+            services.AddSingleton<ClientService, ClientService>();
+
+            //Setup of services for Councelings
+            services.AddSingleton<GenericDbService<Counceling>, GenericDbService<Counceling>>();
+            services.AddSingleton<CouncelingService, CouncelingService>();
+
+            //Setup of services for Employees
+            services.AddSingleton<GenericDbService<Employee>, GenericDbService<Employee>>();
+            services.AddSingleton<EmployeeService, EmployeeService>();
+
+            //Setup of services for Events
+            services.AddSingleton<GenericDbService<Event>, GenericDbService<Event>>();
+            services.AddSingleton<EventService, EventService>();
+
+            //Setup of services for Participants
+            services.AddSingleton<GenericDbService<Participant>, GenericDbService<Participant>>();
+            services.AddSingleton<ParticipantService, ParticipantService>();
+
+            //Setup of services for Users
+            services.AddSingleton<GenericDbService<User>, GenericDbService<User>>();
+            services.AddSingleton<UserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

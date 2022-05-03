@@ -7,5 +7,6 @@ namespace DWBooking.Model
 {
     public class Participant
     {
+        
     }
 }

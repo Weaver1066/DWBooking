@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DWBooking.Interface;
+using DWBooking.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace DWBooking.Services
 {
@@ -10,7 +12,7 @@ namespace DWBooking.Services
     {
         public async Task<IEnumerable<T>> GetObjectsAsync()
         {
-            using (var context = new VagtPlanDbContext())
+            using (var context = new DWBookingDbContext())
             {
                 return await context.Set<T>().AsNoTracking().ToListAsync();
             }
@@ -18,7 +20,7 @@ namespace DWBooking.Services
 
         public async Task AddObjectAsync(T obj)
         {
-            using (var context = new VagtPlanDbContext())
+            using (var context = new DWBookingDbContext())
             {
                 context.Set<T>().Add(obj);
                 await context.SaveChangesAsync();
@@ -27,7 +29,7 @@ namespace DWBooking.Services
 
         public async Task DeleteObjectAsync(T obj)
         {
-            using (var context = new VagtPlanDbContext())
+            using (var context = new DWBookingDbContext())
             {
                 context.Set<T>().Remove(obj);
                 await context.SaveChangesAsync();
@@ -36,7 +38,7 @@ namespace DWBooking.Services
 
         public Task UpdateObjectAsync(T obj)
         {
-            using (var context = new VagtPlanDbContext())
+            using (var context = new DWBookingDbContext())
             {
 
             }
@@ -46,7 +48,7 @@ namespace DWBooking.Services
 
         public async Task<T> GetObjectByIdAsync(int id)
         {
-            using (var context = new VagtPlanDbContext())
+            using (var context = new DWBookingDbContext())
             {
                 context.Set<T>().FindAsync(id);
                 await context.SaveChangesAsync();

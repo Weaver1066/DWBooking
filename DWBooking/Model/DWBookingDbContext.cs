@@ -16,7 +16,7 @@ namespace DWBooking.Model
 
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Event> Events { get; set; }
-        public DbSet<Paticipant> Paticipants { get; set; }
+        public DbSet<Participant> Participants { get; set; }
         public DbSet<Counceling> Councelings { get; set; }
         public DbSet<Client> Clients { get; set; }
     }

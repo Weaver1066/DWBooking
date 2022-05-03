@@ -2,3 +2,61 @@
 @model DWBooking.Pages.Admin.Events.GetAllEventsModel
 @{
 }
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5">
+            <h4 class="page-title" style="text-align: left;">Event oversigt</h4>
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Event oversigt</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <div class="card card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Dato</th>
+                    <th scope="col">Tidspunkt</th>
+                    <th scope="col">Titel</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>31/04/2022</td>
+                    <td>18:00 - 00:00</td>
+                    <td>Mad Aften for folket</td>
+                    <td><a asp-page="EditEvent">Ret Event</a></td>
+                    <td><a asp-page="DeleteEvent">Slet event</a></td>
+                </tr>
+                <tr>
+                    <td>31/04/2022</td>
+                    <td>18:00 - 00:00</td>
+                    <td>Sommerfest!</td>
+                    <td><a asp-page="EditEvent">Ret Event</a></td>
+                    <td><a asp-page="DeleteEvent">Slet event</a></td>
+                </tr>
+                <tr>
+                    <td>31/04/2022</td>
+                    <td>18:00 - 00:00</td>
+                    <td>Foredrag med Lise Sørensen</td>
+                    <td><a asp-page="EditEvent">Ret Event</a></td>
+                    <td><a asp-page="DeleteEvent">Slet event</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

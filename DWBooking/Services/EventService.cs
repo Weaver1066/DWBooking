@@ -47,7 +47,7 @@ namespace DWBooking.Services
         {
             foreach (Event e in EventList)
             {
-                if (e.Id == id) return e;
+                if (e.ID == id) return e;
             }
             return null;
         }
@@ -86,7 +86,7 @@ namespace DWBooking.Services
             Event eventToBeDeleted = null;
             foreach (Event e in EventList)
             {
-                if (e.Id == id)
+                if (e.ID == id)
                 {
                     eventToBeDeleted = e;
                     break;

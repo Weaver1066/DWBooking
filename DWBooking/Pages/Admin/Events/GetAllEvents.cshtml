@@ -35,27 +35,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>31/04/2022</td>
-                    <td>18:00 - 00:00</td>
-                    <td>Mad Aften for folket</td>
-                    <td><a asp-page="EditEvent">Ret Event</a></td>
-                    <td><a asp-page="DeleteEvent">Slet event</a></td>
-                </tr>
-                <tr>
-                    <td>31/04/2022</td>
-                    <td>18:00 - 00:00</td>
-                    <td>Sommerfest!</td>
-                    <td><a asp-page="EditEvent">Ret Event</a></td>
-                    <td><a asp-page="DeleteEvent">Slet event</a></td>
-                </tr>
-                <tr>
-                    <td>31/04/2022</td>
-                    <td>18:00 - 00:00</td>
-                    <td>Foredrag med Lise Sørensen</td>
-                    <td><a asp-page="EditEvent">Ret Event</a></td>
-                    <td><a asp-page="DeleteEvent">Slet event</a></td>
-                </tr>
+                @if (@Model.Events != null)
+                {
+                    foreach (var e in Model.Events)
+                    {
+                        <tr>
+                            <td>@e.Date.Date.ToShortDateString()</td>
+                            <td>@e.Date.TimeOfDay</td>
+                            <td>@e.Name</td>
+                            <td><a asp-route-Id="@e.Id" asp-page="UpdateEvent">Ret Event</a></td>
+                            <td><a asp-route-Id="@e.Id"asp-page="DeleteEvent">Slet event</a></td>
+                        </tr>
+                    }
+                }
             </tbody>
         </table>
     </div>

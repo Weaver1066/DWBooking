@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DWBooking.Model
 {
-    public class Couceling
+    public class Counceling
     {
     }
 }

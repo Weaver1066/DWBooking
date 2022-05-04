@@ -11,7 +11,7 @@ namespace DWBooking.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
-        public int ID { get; set; }
+        public int CouncelingID { get; set; }
         [Required]
         public string Notes { get; set; }
         [Required] 
@@ -19,18 +19,19 @@ namespace DWBooking.Model
         [Required]
         [ForeignKey("EmployeeID")]
         public int EmployeeID { get; set; }
+        public Employee Employee { get; set; }
         [Required]
         [ForeignKey("ClientID")]
         public int ClientID { get; set; }
+        public Client Client { get; set; }
 
         public Counceling()
         {
             
         }
 
-        public Counceling(int id, string notes, DateTime date, int employeeId, int clientId)
+        public Counceling( string notes, DateTime date, int employeeId, int clientId)
         {
-            ID = id;
             Notes = notes;
             Date = date;
             EmployeeID = employeeId;

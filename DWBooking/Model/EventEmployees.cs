@@ -10,8 +10,8 @@ namespace DWBooking.Model
 {
     public class EventEmployees
     {
-        [Key] [ForeignKey("EventID")] public int EventID { get; set; }
-        [Key] [ForeignKey("EmployeeID")] public int EmployeeID { get; set; }
+        [Key] [ForeignKey("EventID")] public int EventID { get; set; } public Event Event { get; set; }
+        [Key] [ForeignKey("EmployeeID")] public int EmployeeID { get; set; } public Employee Employee { get; set; }
 
         public EventEmployees()
         {

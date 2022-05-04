@@ -8,8 +8,7 @@ namespace DWBooking.Model
 {
     public class Person
     {
-        [Key]
-        public int ID { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
@@ -24,9 +23,8 @@ namespace DWBooking.Model
         {
             
         }
-        public Person(int id, string name, string phone, string email)
+        public Person( string name, string phone, string email)
         {
-            ID = id;
             Name = name;
             Phone = phone;
             Email = email;

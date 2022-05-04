@@ -9,15 +9,19 @@ namespace DWBooking.Model
 {
     public class Participant : Person
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ParticipantID { get; set; }
         [Required]
         [ForeignKey("EventID")]
         public int EventID { get; set; }
+        public Event Event { get; set; }
         public Participant():base()
         {
             
         }
 
-        public Participant(int eventId)
+        public Participant( int eventId)
         {
             EventID = eventId;
         }

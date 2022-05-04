@@ -9,6 +9,9 @@ namespace DWBooking.Model
 {
     public class Employee : Person
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int EmployeeID { get; set; }
         [Required]
         public DateTime Age { get; set; }
         [Required]
@@ -19,13 +22,14 @@ namespace DWBooking.Model
         public int Role { get; set; }
         [ForeignKey("UserID")]
         public int UserID { get; set; }
+        public User User { get; set; }
 
         public Employee() :base()
         {
             
         }
 
-        public Employee(int id, string name, string phone, string email, DateTime age, string address, int role, int userid) : base(id, name, phone, email)
+        public Employee( string name, string phone, string email, DateTime age, string address, int role, int userid) : base( name, phone, email)
         {
             Age = age;
             Address = address;

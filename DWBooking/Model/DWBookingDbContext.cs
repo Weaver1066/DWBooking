@@ -19,5 +19,12 @@ namespace DWBooking.Model
         public DbSet<Participant> Participants { get; set; }
         public DbSet<Counceling> Councelings { get; set; }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<EventEmployees> EventEmployees { get; set; }
+        public DbSet<User> Users { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<EventEmployees>()
+                .HasKey(p => new { p.EventID, p.EmployeeID });
+        }
     }
 }

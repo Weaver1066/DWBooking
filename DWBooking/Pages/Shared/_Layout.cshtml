@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using DWBooking.Pages.Admin.Login
+@using System.Net.Http
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -156,6 +158,26 @@
                                 <span class="hide-menu">Opret Medarbejder</span>
                             </a>
                         </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        @{
+                            if (Context.User.Identity.Name==null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="Admin/Login/LoginPage">Login</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item nav-link mr-3">
+                                    User: @Context.User.Identity.Name
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="Admin/Login/LogOut">Logout</a>
+                                </li>
+                            }
+                        }
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

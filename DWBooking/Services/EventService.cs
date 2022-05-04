@@ -15,7 +15,12 @@ namespace DWBooking.Services
         public EventService(GenericDbService<Event> dbService)
         {
             DbService = dbService;
-            EventList = MockData.MockEvents.GetMockEvents();
+            //EventList = MockData.MockEvents.GetMockEvents();
+            //foreach (Event e in EventList)
+            //{
+            //    DbService.AddObjectAsync(e);
+            //}
+            EventList = DbService.GetObjectsAsync().Result.ToList();
         }
 
         /// <summary>

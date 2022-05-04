@@ -11,9 +11,10 @@ namespace DWBooking.Services
         public List<User> Users { get; set; }
         public GenericDbService<User> DbService { get; set; }
         
-        public UserService()
+        public UserService(GenericDbService<User> dbService)
         {
-            
+            DbService = dbService;
+            Users = DbService.GetObjectsAsync().Result.ToList();
         }
 
         //public void AddUser(Employee )

@@ -2,3 +2,53 @@
 @model DWBooking.Pages.Admin.Counceling.GetAllCouncelingModel
 @{
 }
+div class="page-breadcrumb">
+<div class="row">
+    <div class="col-5">
+        <h4 class="page-title" style="text-align: left;">Samtale oversigt</h4>
+    </div>
+    <div class="col-7 align-self-center">
+        <div class="d-flex align-items-center justify-content-end">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Samtale oversigt</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <div class="card card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Samtale ID</th>
+                    <th scope="col">Noter</th>
+                    <th scope="col">Dato</th>
+                    <th scope="col">Rådgiver ID</th>
+                    <th scope="col">Boger ID</th>
+                    <th scope="col">Borger</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (@Model.Councelings != null)
+                {
+                    foreach (var e in Model.Councelings)
+                    {
+                        <tr>
+                            <td><a asp-route-Id="@e.CouncelingID" asp-page="UpdateEvent">Ret Event</a></td>
+                            <td><a asp-route-Id="@e.Notes" asp-page="DeleteEvent">Slet event</a></td>
+                            <td><a asp-route-Id="@e.Date" asp-page="DeleteEvent">Slet event</a></td>
+                            <td><a asp-route-Id="@e.EmployeeID" asp-page="DeleteEvent">Slet event</a></td>
+                            <td><a asp-route-Id="@e.ClientID" asp-page="DeleteEvent">Slet event</a></td>
+                            <td><a asp-route-Id="@e.Client" asp-page="DeleteEvent">Slet event</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

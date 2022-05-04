@@ -8,24 +8,38 @@ namespace DWBooking.Services
 {
     public class EmployeeService
     {
-        public List<Employee> Employees { get; set; }
+        public GenericDbService<Employee> DbService;
+        public List<Employee> EmployeeList { get; set; }
+
+        public EmployeeService(GenericDbService<Employee> dbService)
+        {
+            DbService = dbService;
+            EmployeeList = MockData.MockEmployees.GetMockEmployees();
+            foreach (Employee e in EmployeeList)
+            {
+                DbService.AddObjectAsync(e);
+            }
+            //EmployeeList = DbService.GetObjectsAsync().Result.ToList();
+        }
+
 
         public void AddEmployee(Employee employee)
         {
-            Employees.Add(employee);
+            EmployeeList.Add(employee);
         }
 
         public IEnumerable<Employee> GetEmployees()
         {
-            return Employees;
+            return EmployeeList;
         }
         // Returnere listen af employees
 
         public Employee GetEmployee(int employeeId)
         {
-            foreach (Employee employee in Employees)
+            foreach (Employee employee in EmployeeList)
             {
                 if (employee.EmployeeID == employeeId) return employee;
+
             }
 
             return null;

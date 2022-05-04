@@ -10,9 +10,9 @@ namespace DWBooking.MockData
     {
         private static List<Employee> employees = new List<Employee>()
         {
-            new Employee(21, "Lars Ole", "89048332" ,"LarsOle@Outlook.dk", new DateTime(1992, 11, 2), "Københavnsvej 202", 1),
-            new Employee(22, "Anette Pedersen", "83945931", "AnetteP@outlook.dk", new DateTime(1991, 5, 24), "Englandsvej 10", 2),
-            new Employee(23, "Patrick Weavs", "32423495", "PWeavs@outlook.dk", new DateTime(1985, 6, 14), "Haggisvej 3", 3)
+            new Employee("Weaver Patrick", "84920341", "WeaverP@Outlook.dk", new DateTime(1995, 10, 2), "Englandsvej 10", 1, 20),
+            new Employee("Torben Støger", "72839103", "TStøger@Outlook.dk", new DateTime(1985, 1, 28), "Haggisvej 20", 2, 21),
+            new Employee("Anette Pedersen", "32930142", "AP@Outlook.dk", new DateTime(1997, 5, 8), "Københavnsvej 5", 3, 22)
         };
 
         public static List<Employee> GetMockEmployees()

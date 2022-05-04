@@ -43,8 +43,8 @@
                             <td>@e.Date.Date.ToShortDateString()</td>
                             <td>@e.Date.TimeOfDay</td>
                             <td>@e.Name</td>
-                            <td><a asp-route-Id="@e.Id" asp-page="UpdateEvent">Ret Event</a></td>
-                            <td><a asp-route-Id="@e.Id"asp-page="DeleteEvent">Slet event</a></td>
+                            <td><a asp-route-Id="@e.EventID" asp-page="UpdateEvent">Ret Event</a></td>
+                            <td><a asp-route-Id="@e.EventID"asp-page="DeleteEvent">Slet event</a></td>
                         </tr>
                     }
                 }

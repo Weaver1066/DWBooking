@@ -16,10 +16,10 @@ namespace DWBooking.Services
             
         }
 
-        public void AddUser(Employee i)
-        {
-            Users.Add(new User(i.Username, i.Password));
-        }
+        //public void AddUser(Employee i)
+        //{
+        //    Users.Add(new User(i.Username, i.Password));
+        //}
 
         public List<User> GetUsers()
         {

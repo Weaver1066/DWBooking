@@ -25,7 +25,7 @@ namespace DWBooking.Services
         {
             foreach (Employee employee in Employees)
             {
-                if (employee.ID == employeeId) return employee;
+                if (employee.EmployeeID == employeeId) return employee;
             }
 
             return null;

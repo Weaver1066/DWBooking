@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DWBooking.Migrations
 {
     [DbContext(typeof(DWBookingDbContext))]
-    [Migration("20220509090529_DWSystem")]
+    [Migration("20220509093159_DWSystem")]
     partial class DWSystem
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -110,7 +110,7 @@ namespace DWBooking.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("int");
 
-                    b.Property<int>("UserID")
+                    b.Property<int?>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("EmployeeID");
@@ -240,9 +240,7 @@ namespace DWBooking.Migrations
                 {
                     b.HasOne("DWBooking.Model.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserID");
 
                     b.Navigation("User");
                 });

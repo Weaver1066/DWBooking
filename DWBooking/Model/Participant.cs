@@ -15,6 +15,7 @@ namespace DWBooking.Model
         [Required]
         [ForeignKey("EventID")]
         public int EventID { get; set; }
+        [Required]
         public Event Event { get; set; }
         public Participant():base()
         {

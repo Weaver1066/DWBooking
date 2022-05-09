@@ -14,12 +14,12 @@ namespace DWBooking.Services
         public EmployeeService(GenericDbService<Employee> dbService)
         {
             DbService = dbService;
-            EmployeeList = MockData.MockEmployees.GetMockEmployees();
-            foreach (Employee e in EmployeeList)
-            {
-                DbService.AddObjectAsync(e);
-            }
-            //EmployeeList = DbService.GetObjectsAsync().Result.ToList();
+            //EmployeeList = MockData.MockEmployees.GetMockEmployees();
+            //foreach (Employee e in EmployeeList)
+            //{
+            //    DbService.AddObjectAsync(e);
+            //}
+            EmployeeList = DbService.GetObjectsAsync().Result.ToList();
         }
 
 

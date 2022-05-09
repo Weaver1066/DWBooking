@@ -108,7 +108,7 @@ namespace DWBooking.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("int");
 
-                    b.Property<int>("UserID")
+                    b.Property<int?>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("EmployeeID");
@@ -238,9 +238,7 @@ namespace DWBooking.Migrations
                 {
                     b.HasOne("DWBooking.Model.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserID");
 
                     b.Navigation("User");
                 });

@@ -21,8 +21,9 @@ namespace DWBooking.Model
         [StringLength(50)]
         public int Role { get; set; }
         [ForeignKey("UserID")]
-        public int UserID { get; set; }
-        public User User { get; set; }
+        public User? User { get; set; }
+        public int? UserID { get; set; }
+
 
         public Employee() :base()
         {

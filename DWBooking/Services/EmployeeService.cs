@@ -19,6 +19,7 @@ namespace DWBooking.Services
             {
                 DbService.AddObjectAsync(e);
             }
+
             //EmployeeList = DbService.GetObjectsAsync().Result.ToList();
         }
 

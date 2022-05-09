@@ -2,3 +2,56 @@
 @model DWBooking.Pages.Admin.Employee.GetAllEmployeesModel
 @{
 }
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5">
+            <h4 class="page-title" style="text-align: left;">Employee oversigt</h4>
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Employee oversigt</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <div class="card card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Navn</th>
+                    <th scope="col">Tlf</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Alder</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Stilling</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (@Model.Employees != null)
+                {
+                    foreach (var e in Model.Employees)
+                    {
+                <tr>
+                    <td>@e.ID</td>
+                    <td>@e.Name</td>
+                    <td>@e.Phone</td>
+                    <td>@e.Email</td>
+                    <td>@e.Age.Date</td>
+                    <td>@e.Address</td>
+                    <td>@e.Role</td>
+                </tr>
+                    }
+                }id, name, phone, email, age, DateTime, adress, role
+            </tbody>
+        </table>
+    </div>
+</div>

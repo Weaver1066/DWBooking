@@ -13,6 +13,7 @@ namespace DWBooking.Pages.Admin.Clients
     {
         private CouncelingService councelingService;
         private ClientService clientService;
+        private EmployeeService employeeService;
 
         [BindProperty]
         public  Model.Counceling Counceling { get; set; }
@@ -20,11 +21,13 @@ namespace DWBooking.Pages.Admin.Clients
         [BindProperty]
         public Model.Client Client { get; set; }
 
-
-        public AddClientModel(CouncelingService councelingService, ClientService clientService) //Dependency Injection
+        [BindProperty]
+        public Model.Employee Employee { get; set; }
+        public AddClientModel(CouncelingService councelingService, ClientService clientService, EmployeeService employeeService) //Dependency Injection
         {
             this.councelingService = councelingService;
             this.clientService = clientService;
+            this.employeeService = employeeService;
         }
         public IActionResult OnGet()
         {
@@ -35,17 +38,20 @@ namespace DWBooking.Pages.Admin.Clients
         {
             if (!ModelState.IsValid)
             {
+                employeeService.GetEmployees();
                 return Page();
             }
 
             if (clientService.CheckPhone(Client.Phone) == null)
             {
                 await clientService.AddClientAsync(Client);
+                Counceling.Client = Client;
                 await councelingService.AddCouncelingAsync(Counceling);
                 return RedirectToPage("GetAllCounceling");
             }
             else
             {
+                Counceling.Client = Client;
                 await councelingService.AddCouncelingAsync(Counceling);
                 return RedirectToPage("GetAllCounceling");
             }

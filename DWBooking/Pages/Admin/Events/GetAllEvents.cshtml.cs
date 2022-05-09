@@ -14,6 +14,7 @@ namespace DWBooking.Pages.Admin.Events
         private EventService eventService;
 
         public List<Event> Events { get; private set; }
+        public Event Event { get; set; }
 
         public GetAllEventsModel(EventService eventService) //Dependency Injection
         {
@@ -23,6 +24,12 @@ namespace DWBooking.Pages.Admin.Events
         {
             Events = eventService.GetEvents().ToList();
             //Events.Sort();
+            return Page();
+        }
+
+        public IActionResult OnPostGetEventModal(int id)
+        {
+            Event = eventService.GetEventById(id);
             return Page();
         }
     }

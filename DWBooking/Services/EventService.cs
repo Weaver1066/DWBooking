@@ -21,6 +21,7 @@ namespace DWBooking.Services
             //    DbService.AddObjectAsync(e);
             //}
             EventList = DbService.GetObjectsAsync().Result.ToList();
+
         }
 
         /// <summary>
@@ -66,16 +67,16 @@ namespace DWBooking.Services
         {
             if (e != null)
             {
-                //foreach (Event i in EventList)
-                //{
-                //    if (e.Id == i.Id)
-                //    {
-                //        i.Name = e.Name;
-                //        i.Date = e.Date;
-                //        i.Description = e.Description;
-                //        i.Type = e.Type;
-                //    }
-                //}
+                foreach (Event i in EventList)
+                {
+                    if (i.EventID == e.EventID)
+                    {
+                        i.Name = e.Name;
+                        i.Date = e.Date;
+                        i.Description = e.Description;
+                        i.Type = e.Type;
+                    }
+                }
                 await DbService.UpdateObjectAsync(e);
             }
         }
@@ -106,3 +107,4 @@ namespace DWBooking.Services
         }
     }
 }
+

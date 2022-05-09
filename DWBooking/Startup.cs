@@ -9,7 +9,11 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DWBooking
 {
@@ -51,6 +55,24 @@ namespace DWBooking
             //Setup of services for Users
             services.AddSingleton<GenericDbService<User>, GenericDbService<User>>();
             services.AddSingleton<UserService, UserService>();
+
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions =>
+            //{
+            //    cookieOptions.LoginPath = "/Login/LoginPage";
+            //});
+
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("Administrator", policy =>
+            //        policy.RequireClaim(ClaimTypes.Role, "admin"));
+            //});
+
+
+
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizeFolder("/Admin");
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,7 +93,7 @@ namespace DWBooking
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

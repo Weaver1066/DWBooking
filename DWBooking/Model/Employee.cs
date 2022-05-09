@@ -29,12 +29,18 @@ namespace DWBooking.Model
             
         }
 
-        public Employee( string name, string phone, string email, DateTime age, string address, int role, int userid) : base( name, phone, email)
+        public Employee( string name, string phone, string email, DateTime age, string address, int role, User user) : base( name, phone, email)
         {
             Age = age;
             Address = address;
             Role = role;
-            UserID = userid;
+            User = user;
+        }
+        public Employee(string name, string phone, string email, DateTime age, string address, int role) : base(name, phone, email)
+        {
+            Age = age;
+            Address = address;
+            Role = role;
         }
     }
 }

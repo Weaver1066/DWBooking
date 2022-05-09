@@ -1,4 +1,5 @@
 ﻿@page
+@using DWBooking.Model
 @model DWBooking.Pages.Admin.Events.GetAllEventsModel
 @{
 }
@@ -26,29 +27,60 @@
     <div class="card card-body">
         <table class="table">
             <thead>
-                <tr>
-                    <th scope="col">Dato</th>
-                    <th scope="col">Tidspunkt</th>
-                    <th scope="col">Titel</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
+            <tr>
+                <th scope="col">Dato</th>
+                <th scope="col">Tidspunkt</th>
+                <th scope="col">Titel</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
             </thead>
             <tbody>
-                @if (@Model.Events != null)
+            @if (@Model.Events != null)
+            {
+                foreach (var e in Model.Events)
                 {
-                    foreach (var e in Model.Events)
-                    {
-                        <tr>
-                            <td>@e.Date.Date.ToShortDateString()</td>
-                            <td>@e.Date.TimeOfDay</td>
-                            <td>@e.Name</td>
-                            <td><a asp-route-Id="@e.EventID" asp-page="UpdateEvent">Ret Event</a></td>
-                            <td><a asp-route-Id="@e.EventID"asp-page="DeleteEvent">Slet event</a></td>
-                        </tr>
-                    }
+                    <tr>
+                        <td>@e.Date.Date.ToShortDateString()</td>
+                        <td>@e.Date.TimeOfDay</td>
+                        <td>@e.Name</td>
+                        <td><a asp-route-id="@e.EventID" asp-page="UpdateEvent">Ret Event</a></td>
+                        <td><a asp-route-id="@e.EventID" asp-page-handler="GetEventModal">Slet event</a></td>
+                    </tr>
                 }
+            }
             </tbody>
         </table>
     </div>
 </div>
+@if(Model.Event != null)
+{
+    <div style="visibility: collapse" class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><small class="text-muted">(@Model.Event)</small>@Model.Event.Date</h5>
+                    <a type="button" class="close" asp-page="RosterPage">&times;</a>
+                </div>
+                <div class="modal-body">
+                    <p><b>EventID</b>@Model.Event.EventID</p>
+                </div>
+                <div class="modal-footer">
+                    <a type="button" class="btn btn-danger" asp-page="RosterPage">Close</a>
+                    <a type="button" class="btn btn-danger" asp-page="RosterPage">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts
+{
+    @*//jquery - javascript der sikre at modalen kun kan lukkes ved klik på modalen ogat den er åben når siden vises*@
+    <script>
+        $(document).ready(function () {
+            $("#myModal").modal({ backdrop: "static" });
+            $("#myModal").modal('show');
+        });
+    </script>
+}

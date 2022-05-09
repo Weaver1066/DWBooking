@@ -36,14 +36,13 @@ namespace DWBooking.Services
             }
         }
 
-        public Task UpdateObjectAsync(T obj)
+        public async Task UpdateObjectAsync(T obj)
         {
             using (var context = new DWBookingDbContext())
             {
-
+                context.Set<T>().Update(obj);
+                await context.SaveChangesAsync();
             }
-
-            throw new NotImplementedException();
         }
 
         public async Task<T> GetObjectByIdAsync(int id)

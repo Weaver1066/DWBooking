@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using DWBooking.Pages.Admin.Login
+@using System.Net.Http
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -157,12 +159,39 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="Admin/Employee/AddMember"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="Admin/Employee/AddEmployee"
                                aria-expanded="false">
                                 <i class="mdi mdi-border-none"></i>
                                 <span class="hide-menu">Opret Medarbejder</span>
                             </a>
                         </li>
+                        <li class="sidebar-item" style="border-top: 3px solid rgb(202, 225, 246);">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="GetEvents"
+                               aria-expanded="false">
+                                <i class="mdi mdi-account-network"></i>
+                                <span class="hide-menu">Events</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        @{
+                            if (Context.User.Identity.Name==null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="Admin/Login/LoginPage">Login</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item nav-link mr-3">
+                                    User: @Context.User.Identity.Name
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="Admin/Login/LogOut">Logout</a>
+                                </li>
+                            }
+                        }
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

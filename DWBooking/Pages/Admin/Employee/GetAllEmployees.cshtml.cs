@@ -14,15 +14,16 @@ namespace DWBooking.Pages.Admin.Employee
 
         public List<Model.Employee> Employees { get; private set; }
 
-        public GetAllEmployeesModel(EmployeeService employeeService) //Dependency Injection
+        public GetAllEmployeesModel(EmployeeService employeeService)
         {
             this.employeeService = employeeService;
         }
         public IActionResult OnGet()
         {
             Employees = employeeService.GetEmployees().ToList();
-            //Events.Sort();
             return Page();
         }
+
+        //Iactionresult returner page, bruges til at returne page
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +9,9 @@ namespace DWBooking.Model
 {
     public class Employee : Person
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int EmployeeID { get; set; }
         [Required]
         public DateTime Age { get; set; }
         [Required]
@@ -16,17 +20,21 @@ namespace DWBooking.Model
         [Required]
         [StringLength(50)]
         public int Role { get; set; }
+        [ForeignKey("UserID")]
+        public int UserID { get; set; }
+        public User User { get; set; }
 
         public Employee() :base()
         {
             
         }
 
-        public Employee(int id, string name, string phone, string email, DateTime age, string address, int role) : base(id, name, phone, email)
+        public Employee( string name, string phone, string email, DateTime age, string address, int role, int userid) : base( name, phone, email)
         {
             Age = age;
             Address = address;
             Role = role;
+            UserID = userid;
         }
     }
 }

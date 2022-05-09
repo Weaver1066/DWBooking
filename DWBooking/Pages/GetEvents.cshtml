@@ -1,11 +1,11 @@
 ﻿@page
-@model DWBooking.Pages.Admin.Employee.GetAllEmployeesModel
+@model DWBooking.Pages.GetEventsModel
 @{
 }
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-5">
-            <h4 class="page-title" style="text-align: left;">Medarbejder oversigt</h4>
+            <h4 class="page-title" style="text-align: left;">Event oversigt</h4>
         </div>
         <div class="col-7 align-self-center">
             <div class="d-flex align-items-center justify-content-end">
@@ -14,7 +14,7 @@
                         <li class="breadcrumb-item">
                             <a href="#">Home</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Medarbejder oversigt</li>
+                        <li class="breadcrumb-item active" aria-current="page">Event oversigt</li>
                     </ol>
                 </nav>
             </div>
@@ -26,28 +26,22 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Navn</th>
-                <th scope="col">Telefon</th>
-                <th scope="col">Email</th>
-                <th scope="col">Alder</th>
-                <th scope="col">Adresse</th>
-                <th scope="col">Stilling</th>
-                <th scope="col">Bruger ID</th>
+                <th scope="col">Dato</th>
+                <th scope="col">Tidspunkt</th>
+                <th scope="col">Titel</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
-            @if (@Model.Employees != null)
+            @if (@Model.Events != null)
             {
-                foreach (var e in Model.Employees)
+                foreach (var e in Model.Events)
                 {
                     <tr>
+                        <td>@e.Date.Date.ToShortDateString()</td>
+                        <td>@e.Date.TimeOfDay</td>
                         <td>@e.Name</td>
-                        <td>@e.Phone</td>
-                        <td>@e.Email</td>
-                        <td>@e.Age.Date</td>
-                        <td>@e.Address</td>
-                        <td>@e.Role</td>
-                        <td>@e.UserID</td>
                     </tr>
                 }
             }

@@ -21,7 +21,6 @@ namespace DWBooking.Services
             //    DbService.AddObjectAsync(e);
             //}
             EventList = DbService.GetObjectsAsync().Result.ToList();
-
         }
 
         /// <summary>

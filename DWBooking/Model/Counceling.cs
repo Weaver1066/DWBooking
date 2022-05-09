@@ -12,7 +12,6 @@ namespace DWBooking.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
         public int CouncelingID { get; set; }
-        [Required]
         public string Notes { get; set; }
         [Required] 
         public DateTime Date { get; set; }

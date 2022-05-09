@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DWBooking.Migrations
 {
     [DbContext(typeof(DWBookingDbContext))]
-    [Migration("20220509083750_DWSystem")]
+    [Migration("20220509090529_DWSystem")]
     partial class DWSystem
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,7 +65,6 @@ namespace DWBooking.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Notes")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CouncelingID");

@@ -19,7 +19,7 @@ namespace DWBooking.Pages.Admin.Employee
         public AddEmployeeModel(EmployeeService iS)
         {
             employeeService = iS;
-            employees = MockData.MockEmployees.GetMockEmployees();
+            employees = employeeService.GetEmployees().ToList();
         }
 
         public IActionResult OnGet()

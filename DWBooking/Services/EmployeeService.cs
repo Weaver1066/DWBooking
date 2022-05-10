@@ -23,9 +23,10 @@ namespace DWBooking.Services
         }
 
 
-        public void AddEmployee(Employee employee)
+        public async void AddEmployee(Employee employee)
         {
             EmployeeList.Add(employee);
+            await DbService.AddObjectAsync(employee);
         }
 
         public IEnumerable<Employee> GetEmployees()

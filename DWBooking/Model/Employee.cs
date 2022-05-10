@@ -18,7 +18,6 @@ namespace DWBooking.Model
         [StringLength(50)]
         public string Address { get; set; }
         [Required]
-        [StringLength(50)]
         public int Role { get; set; }
         [ForeignKey("UserID")]
         public User? User { get; set; }
@@ -29,7 +28,12 @@ namespace DWBooking.Model
         {
             
         }
-
+        public Employee(string name, string phone, string email, DateTime age, string address, int role) : base(name, phone, email)
+        {
+            Age = age;
+            Address = address;
+            Role = role;
+        }
         public Employee( string name, string phone, string email, DateTime age, string address, int role, User user) : base( name, phone, email)
         {
             Age = age;
@@ -37,11 +41,6 @@ namespace DWBooking.Model
             Role = role;
             User = user;
         }
-        public Employee(string name, string phone, string email, DateTime age, string address, int role) : base(name, phone, email)
-        {
-            Age = age;
-            Address = address;
-            Role = role;
-        }
+
     }
 }

@@ -19,7 +19,7 @@ namespace DWBooking.Pages.Admin.Employee
         public AddEmployeeModel(EmployeeService iS)
         {
             employeeService = iS;
-            employees = MockData.MockEmployees.GetMockEmployees();
+            //employees = MockData.MockEmployees.GetMockEmployees();
         }
 
         public IActionResult OnGet()
@@ -34,7 +34,7 @@ namespace DWBooking.Pages.Admin.Employee
                 return Page();
             }
             employeeService.AddEmployee(Employee);
-            return RedirectToPage("");
+            return RedirectToPage("GetAllEmployees");
         }
     }
 }

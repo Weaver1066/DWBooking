@@ -34,6 +34,16 @@ namespace DWBooking.Pages.Admin.Clients
             return Page();
         }
 
+        public IActionResult OnPostEmployee()
+        {
+            if (ModelState.IsValid)
+            {
+                employeeService.GetEmployees();
+                return Page();
+            }
+
+            return null;
+        }
         public async Task<IActionResult> OnPost()
         {
             if (!ModelState.IsValid)

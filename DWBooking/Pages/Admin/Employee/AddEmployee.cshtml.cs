@@ -34,7 +34,7 @@ namespace DWBooking.Pages.Admin.Employee
                 return Page();
             }
             employeeService.AddEmployee(Employee);
-            return RedirectToPage("");
+            return RedirectToPage("GetAllEmployees");
         }
     }
 }

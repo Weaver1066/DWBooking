@@ -22,7 +22,7 @@ namespace DWBooking.Model
             
         }
 
-        public Participant( int eventId)
+        public Participant( int eventId, string name, string phone, string email) : base(name, phone, email)
         {
             EventID = eventId;
         }

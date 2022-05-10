@@ -1,0 +1,48 @@
+﻿@page
+@model DWBooking.Pages.Bruger.UserEvent.AddParticipantModel
+@{
+}
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5">
+            <h4 class="page-title" style="text-align: left;">Opret deltager</h4>
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Opret deltager</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <label asp-for="Participant.Name">Navn<span class="help"></span></label>
+                        <input asp-for="Participant.Name" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Participant.Phone">Telefon<span class="help"></span></label>
+                        <input asp-for="Participant.Phone" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Participant.Email">Email<span class="help"></span></label>
+                        <input asp-for="Participant.Email" type="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Tilmeld" class="btn btn-primary form-control" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

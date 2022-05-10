@@ -27,29 +27,28 @@
             <div class="card card-body">
                 <form method="post">
                         <div class="form-group">
-                            <label>Navn<span class="help"></span></label>
-                            <input type="text" class="form-control">
+                            <label asp-for="Employee.Name">Navn<span class="help"></span></label>
+                            <input asp-for="Employee.Name" type="text" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Telefon<span class="help"></span></label>
-                            <input type="text" class="form-control">
+                            <label asp-for="Employee.Phone">Telefon<span class="help"></span></label>
+                            <input asp-for="Employee.Phone" type="text" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="example-email">Email<span class="help"></span></label>
-                            <input type="email" id="example-email" name="example-email" class="form-control"
-                                   placeholder="Email">
+                            <label asp-for="Employee.Email">Email<span class="help"></span></label>
+                            <input asp-for="Employee.Email" type="email" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Fødselsdato<span class="help"></span></label>
-                            <input type="text" class="form-control">
+                            <label asp-for="Employee.Age">Fødselsdato<span class="help"></span></label>
+                            <input asp-for="Employee.Age" type="text" class="form-control" value="01/12/2000">
                         </div>
                         <div class="form-group">
-                            <label>Adresse<span class="help"></span></label>
-                            <input type="text" class="form-control">
+                            <label asp-for="Employee.Address">Adresse<span class="help"></span></label>
+                            <input asp-for="Employee.Address" type="text" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Stilling<span class="help"></span></label>
-                            <input type="text" class="form-control">
+                            <label asp-for="Employee.Role">Stilling<span class="help"></span></label>
+                            <input asp-for="Employee.Role" type="text" class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Opret" class="btn btn-primary form-control"/>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DWBooking.Model;
 using DWBooking.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,6 +15,7 @@ namespace DWBooking.Pages.Admin.Clients
         private CouncelingService councelingService;
         private ClientService clientService;
         private EmployeeService employeeService;
+        public List<Model.Employee> Employees { get; private set; }
 
         [BindProperty]
         public  Model.Counceling Counceling { get; set; }
@@ -31,40 +33,30 @@ namespace DWBooking.Pages.Admin.Clients
         }
         public IActionResult OnGet()
         {
+            Employees = employeeService.GetEmployees().ToList();
             return Page();
         }
 
-        public IActionResult OnPostEmployee()
-        {
-            if (ModelState.IsValid)
-            {
-                employeeService.GetEmployees();
-                return Page();
-            }
-
-            return null;
-        }
         public async Task<IActionResult> OnPost()
         {
-            if (!ModelState.IsValid)
-            {
-                employeeService.GetEmployees();
-                return Page();
-            }
-
+            Employees = employeeService.GetEmployees().ToList();
+           
             if (clientService.CheckPhone(Client.Phone) == null)
             {
                 await clientService.AddClientAsync(Client);
-                Counceling.Client = Client;
-                await councelingService.AddCouncelingAsync(Counceling);
-                return RedirectToPage("GetAllCounceling");
             }
-            else
-            {
-                Counceling.Client = Client;
-                await councelingService.AddCouncelingAsync(Counceling);
-                return RedirectToPage("GetAllCounceling");
-            }
+
+            Client = clientService.CheckPhone(Client.Phone);
+            //Counceling.Client = Client;
+            Counceling.ClientID = Client.ClientID;
+            Employee = employeeService.GetEmployee(Employee.EmployeeID);
+            //Counceling.Employee = Employee;
+            Counceling.EmployeeID = Employee.EmployeeID;
+
+
+            await councelingService.AddCouncelingAsync(Counceling);
+                return RedirectToPage("../Counceling/GetAllCounceling");
+            
         }
     }
 }

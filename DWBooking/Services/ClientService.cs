@@ -16,11 +16,11 @@ namespace DWBooking.Services
         public ClientService(GenericDbService<Client> dbService)
         {
             DbService = dbService;
-            ClientList = MockData.MockClients.GetMockClients();
-            foreach (Client e in ClientList)
-            {
-                DbService.AddObjectAsync(e);
-            }
+            //ClientList = MockData.MockClients.GetMockClients();
+            //foreach (Client e in ClientList)
+            //{
+            //    DbService.AddObjectAsync(e);
+            //}
             ClientList = DbService.GetObjectsAsync().Result.ToList();
         }
 
@@ -35,6 +35,10 @@ namespace DWBooking.Services
             await DbService.AddObjectAsync(client);
         }
 
+        public IEnumerable<Client> GetClients()
+        {
+            return ClientList;
+        }
         /// <summary>
         /// Checks the database and returns a client if it exists.
         /// </summary>

@@ -47,29 +47,22 @@
                 <tr>
                     <th scope="col">Navn</th>
                     <th scope="col">Telefon</th>
-                    <th scope="col"></th>
+                    <th scope="col">Email</th>
                     <th scope="col">Funktion</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">Navnine navnsen</th>
-                    <td>31425364</td>
-                    <td></td>
-                    <td><a asp-page="GetAppointmentByClient">Se log</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">Navnine navnsen</th>
-                    <td>31425364</td>
-                    <td></td>
-                    <td><a asp-page="GetAppointmentByClient">Se log</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">Navnine navnsen</th>
-                    <td>31425364</td>
-                    <td></td>
-                    <td><a asp-page="GetAppointmentByClient">Se log</a></td>
-                </tr>
+                @if (@Model.Client != null)
+                {
+                    foreach (var client in Model.Clients)
+                    {
+                        <tr>
+                            <td>@client.Name</td>
+                            <td>@client.Phone</td>
+                            <td>@client.Email</td>
+                        </tr>
+                    }
+                }
             </tbody>
         </table>
     </div>

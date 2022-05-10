@@ -104,6 +104,17 @@ namespace DWBooking.Services
             }
             return eventToBeDeleted;
         }
+
+        /// <summary>
+        /// Sorts the Eventlist by date desc. returns IEnumerable of events
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Event> SortByDateDescending()
+        {
+            return from Event in EventList
+                orderby Event.Date descending
+                select Event;
+        }
     }
 }
 

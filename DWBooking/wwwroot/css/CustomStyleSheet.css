@@ -5,3 +5,7 @@
     text-align: left !important;
     
 }
+
+#EventList tr td a {
+    color: black;
+}

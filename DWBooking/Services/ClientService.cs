@@ -2,10 +2,63 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DWBooking.Model;
 
 namespace DWBooking.Services
 {
     public class ClientService
     {
+        private GenericDbService<Client> DbService { get; set; }
+
+        //List is made static as there is no instance where a user require their own instance of the list.
+        public static List<Client> ClientList { get; set; }
+
+        public ClientService(GenericDbService<Client> dbService)
+        {
+            DbService = dbService;
+            //ClientList = MockData.MockClients.GetMockClients();
+            //foreach (Client e in ClientList)
+            //{
+            //    DbService.AddObjectAsync(e);
+            //}
+            ClientList = DbService.GetObjectsAsync().Result.ToList();
+        }
+
+        /// <summary>
+        /// Adds event to the database and to the services eventlist
+        /// </summary>
+        /// <param name="client">the event to be added</param>
+        /// <returns></returns>
+        public async Task AddClientAsync(Client client)
+        {
+            ClientList.Add(client);
+            await DbService.AddObjectAsync(client);
+        }
+
+        public IEnumerable<Client> GetClients()
+        {
+            return ClientList;
+        }
+        /// <summary>
+        /// Checks the database and returns a client if it exists.
+        /// </summary>
+        /// <param name="phone">the event to be added</param>
+        /// <returns></returns>
+        public Client CheckPhone(string phone)
+        {
+            foreach (var client in ClientList)
+            {
+                if (client.Phone == phone)
+                {
+                    return client;
+                }
+            }
+
+            return null;
+        }
+
+
+       
+
     }
 }

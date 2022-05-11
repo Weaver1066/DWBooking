@@ -17,5 +17,9 @@ namespace DWBooking.Model
             
         }
 
+        public Client(string name, string phone, string email) : base(name, phone, email)
+        {
+            
+        }
     }
 }

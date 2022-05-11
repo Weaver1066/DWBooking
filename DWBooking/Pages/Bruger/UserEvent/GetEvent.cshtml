@@ -1,5 +1,5 @@
 ﻿@page
-@model DWBooking.Pages.GetEventsModel
+@model DWBooking.Pages.Bruger.UserEvent.GetEventModel
 @{
 }
 <div class="page-breadcrumb">
@@ -25,26 +25,27 @@
     <div class="card card-body">
         <table class="table">
             <thead>
-            <tr>
-                <th scope="col">Dato</th>
-                <th scope="col">Tidspunkt</th>
-                <th scope="col">Titel</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
+                <tr>
+                    <th scope="col">Dato</th>
+                    <th scope="col">Tidspunkt</th>
+                    <th scope="col">Titel</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
             </thead>
             <tbody>
-            @if (@Model.Events != null)
-            {
-                foreach (var e in Model.Events)
+                @if (@Model.Events != null)
                 {
-                    <tr>
-                        <td>@e.Date.Date.ToShortDateString()</td>
-                        <td>@e.Date.TimeOfDay</td>
-                        <td>@e.Name</td>
-                    </tr>
+                    foreach (var e in Model.Events)
+                    {
+                        <tr>
+                            <td>@e.Date.Date.ToShortDateString()</td>
+                            <td>@e.Date.TimeOfDay</td>
+                            <td>@e.Name</td>
+                            <td><a class="button" type="btn" asp-page="AddParticipant" asp-route-id="@e.EventID">Deltag</a></td>
+                        </tr>
+                    }
                 }
-            }
             </tbody>
         </table>
     </div>

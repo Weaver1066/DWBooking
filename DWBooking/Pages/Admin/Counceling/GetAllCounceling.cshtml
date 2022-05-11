@@ -25,24 +25,25 @@ div class="page-breadcrumb">
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Samtale ID</th>
-                    <th scope="col">Noter</th>
-                    <th scope="col">Dato</th>
-                    <th scope="col">Rådgiver ID</th>
-                    <th scope="col">Boger ID</th>
                     <th scope="col">Borger</th>
+                    <th scope="col">Rådgiver</th>
+                    <th scope="col">Dato</th>
+                    <th scope="col">subject</th>
+                    <th scope="col">Noter</th>
                 </tr>
             </thead>
             <tbody>
                 @if (@Model.Councelings != null)
                 {
-                    foreach (var e in Model.Councelings)
+                    foreach (var counceling in Model.Councelings)
                     {
                         <tr>
-                            <td><a asp-route-Id="@e.Date" asp-page="DeleteEvent">Slet event</a></td>
-                            <td><a asp-route-Id="@e.Employee.Name" asp-page="DeleteEvent">Slet event</a></td>
-                            <td><a asp-route-Id="@e.Client.Name" asp-page="DeleteEvent">Slet event</a></td>
-                            <td><a asp-route-Id="@e.Client.Phone" asp-page="DeleteEvent">Slet event</a></td>
+                            <td>@counceling.Client.Name</td>
+                            <td>@counceling.Employee.Name</td>
+                            <td>@counceling.Date</td>
+                            <td>rådgivning</td>
+                            <td>@counceling.Notes</td>
+
                         </tr>
                     }
                 }

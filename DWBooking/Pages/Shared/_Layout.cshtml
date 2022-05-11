@@ -124,49 +124,49 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="Admin/Counceling/GetAllCounceling"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Counceling/GetAllCounceling"
                                aria-expanded="false">
                                 <i class="mdi mdi-av-timer"></i>
                                 <span class="hide-menu">Samtale oversigt</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="Admin/Clients/AddClient"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Clients/AddClient"
                                aria-expanded="false">
                                 <i class="mdi mdi-av-timer"></i>
                                 <span class="hide-menu">Opret samtale</span>
                             </a>
                         </li>
                         <li class="sidebar-item" style="border-top: 3px solid rgb(202, 225, 246);">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="Admin/Events/GetAllEvents"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Events/GetAllEvents"
                                aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Events</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="Admin/Events/AddEvent"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Events/AddEvent"
                                aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Opret event</span>
                             </a>
                         </li>
                         <li class="sidebar-item" style="border-top: 3px solid rgb(202, 225, 246);">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="Admin/Employee/GetAllEmployees"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Employee/GetAllEmployees"
                                aria-expanded="false">
                                 <i class="mdi mdi-face"></i>
                                 <span class="hide-menu">Medarbejdere</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="Admin/Employee/AddEmployee"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Employee/AddEmployee"
                                aria-expanded="false">
                                 <i class="mdi mdi-border-none"></i>
                                 <span class="hide-menu">Opret Medarbejder</span>
                             </a>
                         </li>
                         <li class="sidebar-item" style="border-top: 3px solid rgb(202, 225, 246);">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="GetEvents"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/GetEvents"
                                aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Events</span>
@@ -178,7 +178,7 @@
                             if (Context.User.Identity.Name==null)
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-page="Admin/Login/LoginPage">Login</a>
+                                    <a class="nav-link" asp-area="" asp-page="/Admin/Login/LoginPage">Login</a>
                                 </li>
                             }
                             else
@@ -188,7 +188,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-page="Admin/Login/LogOut">Logout</a>
+                                    <a class="nav-link" asp-area="" asp-page="/Admin/Login/LogOut">Logout</a>
                                 </li>
                             }
                         }

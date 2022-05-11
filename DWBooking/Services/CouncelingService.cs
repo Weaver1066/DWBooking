@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DWBooking.Model;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace DWBooking.Services
 {
@@ -21,6 +24,7 @@ namespace DWBooking.Services
             {
                 DbService.AddObjectAsync(e);
             }
+
             CouncelingList = DbService.GetObjectsAsync().Result.ToList();
         }
 
@@ -42,6 +46,30 @@ namespace DWBooking.Services
         public IEnumerable<Counceling> GetCouncelings()
         {
             return CouncelingList;
+        }
+
+        public async Task<IEnumerable<Counceling>> GetCouncelingsAndEmplyeesAndClients()
+        {
+            List<Counceling> templist = new List<Counceling>();
+
+            using (var context = new DWBookingDbContext())
+            {
+                templist = context.Councelings.Include(u => u.Client).Include(i => i.Employee).AsNoTracking().ToList();
+            }
+
+            return templist;
+        }
+
+
+        public IEnumerable<Counceling> GetCouncelingsByClient(int id, IEnumerable<Counceling> temp)
+
+        {
+            List<Counceling> templist = new List<Counceling>();
+            foreach (var c in temp)
+            {
+                if (c.ClientID == id) templist.Add(c);
+            }
+            return templist;
         }
 
     }

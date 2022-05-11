@@ -52,7 +52,7 @@
                 </tr>
             </thead>
             <tbody>
-                @if (@Model.Client != null)
+                @if (@Model.Clients != null)
                 {
                     foreach (var client in Model.Clients)
                     {
@@ -60,6 +60,8 @@
                             <td>@client.Name</td>
                             <td>@client.Phone</td>
                             <td>@client.Email</td>
+                            <td><a asp-route-id="@client.ClientID" asp-page="GetCouncelingByClient">Se log</a></td>
+
                         </tr>
                     }
                 }

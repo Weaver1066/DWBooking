@@ -16,15 +16,9 @@ namespace DWBooking.Pages.Admin.Clients
         private ClientService clientService;
         private EmployeeService employeeService;
         public List<Model.Employee> Employees { get; private set; }
-
-        [BindProperty]
-        public  Model.Counceling Counceling { get; set; }
-
-        [BindProperty]
-        public Model.Client Client { get; set; }
-
-        [BindProperty]
-        public Model.Employee Employee { get; set; }
+        [BindProperty] public  Model.Counceling Counceling { get; set; }
+        [BindProperty] public Model.Client Client { get; set; }
+        [BindProperty] public Model.Employee Employee { get; set; }
         public AddClientModel(CouncelingService councelingService, ClientService clientService, EmployeeService employeeService) //Dependency Injection
         {
             this.councelingService = councelingService;

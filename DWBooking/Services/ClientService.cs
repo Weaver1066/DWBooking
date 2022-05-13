@@ -57,8 +57,31 @@ namespace DWBooking.Services
             return null;
         }
 
+        public Client SearchClientName(string name)
+        {
+            foreach (var client in ClientList)
+            {
+                if (client.Name.ToLower() == name.ToLower() || client.Phone == name)
+                {
+                    return client;
+                }
+            }
 
-       
+            return null;
+        }
 
+        public IEnumerable<Client> SearchClientsByName(string name)
+        {
+            List<Client> temp = new List<Client>();
+            foreach (var client in ClientList)
+            {
+                if (client.Name.ToLower().Contains(name.ToLower()))
+                {
+                    temp.Add(client);
+                }
+            }
+
+            return temp;
+        }
     }
 }

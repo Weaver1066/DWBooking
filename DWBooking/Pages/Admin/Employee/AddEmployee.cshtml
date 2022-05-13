@@ -42,22 +42,37 @@
                             <label asp-for="Employee.Age">Fødselsdato<span class="help"></span></label>
                             <input asp-for="Employee.Age" type="date" class="form-control">
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Employee.Address">Adresse<span class="help"></span></label>
-                            <input asp-for="Employee.Address" type="text" class="form-control">
-                        </div>
                     <div class="form-group">
-                        <select asp-for="Employee.Role" class="form-select" aria-label="Default select example">
-                            <option selected>Vælg Stilling</option>
-                            <option value="1">Admin</option>
-                            <option value="2">Rådgiver</option>
-                            <option value="3">Frivilig</option>
-                        </select>
+                        <label asp-for="Employee.Address">Adresse<span class="help"></span></label>
+                        <input asp-for="Employee.Address" type="text" class="form-control">
                     </div>
+                    <form method="post">
                         <div class="form-group">
-                            <input type="submit" value="Opret" class="btn btn-primary form-control"/>
+                            <select asp-for="@Model.Role" id="roleSelect" name="roleSelect" class="form-select" aria-label="Default select example">
+                                <option selected>Vælg Stilling</option>
+                                <option id="1" value="1">Admin</option>
+                                <option id="2" value="2">Rådgiver</option>
+                                <option id="3" value="3">Frivilig</option>
+                            </select>
+                            <input type="submit" asp-page-handler="SelectRole" value="RoleSelection" class="btn btn-primary" />
                         </div>
                     </form>
+                    @if (Model.Role ==1 || Model.Role == 2)
+                    {
+                        <div id="extra" name="extra" style="display: none">
+
+                            <label asp-for="Employee.User.Username" class="control-label" for="username">Username</label>
+                            <input asp-for="Employee.User.Username" class="form-control" type="text" id="username" name="username">
+
+                            <label asp-for="Employee.User.Password" class="control-label" for="password">Password</label>
+                            <input asp-for="Employee.User.Password" class="form-control" type="text" id="password" name="password">
+
+                        </div>
+                    }
+                    <div class="form-group">
+                        <input type="submit" value="Opret" class="btn btn-primary form-control"/>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

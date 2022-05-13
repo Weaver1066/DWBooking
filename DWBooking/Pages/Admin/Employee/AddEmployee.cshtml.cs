@@ -10,8 +10,10 @@ namespace DWBooking.Pages.Admin.Employee
 {
     public class AddEmployeeModel : PageModel
     {
+        [BindProperty] public int Role { get; set; }
         private EmployeeService employeeService;
         private List<Model.Employee> employees;
+
 
         [BindProperty]
         public Model.Employee Employee { get; set; }
@@ -35,6 +37,12 @@ namespace DWBooking.Pages.Admin.Employee
             }
             employeeService.AddEmployee(Employee);
             return RedirectToPage("GetAllEmployees");
+        }
+
+        public IActionResult OnPostSelectRole()
+        {
+            role = role;
+            return Page();
         }
     }
 }

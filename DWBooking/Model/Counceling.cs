@@ -23,7 +23,6 @@ namespace DWBooking.Model
         [ForeignKey("ClientID")]
         public int ClientID { get; set; }
         public Client Client { get; set; }
-
         public Counceling()
         {
             

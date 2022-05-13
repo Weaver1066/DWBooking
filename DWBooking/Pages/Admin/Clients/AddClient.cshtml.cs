@@ -16,6 +16,9 @@ namespace DWBooking.Pages.Admin.Clients
         private ClientService clientService;
         private EmployeeService employeeService;
         public List<Model.Employee> Employees { get; private set; }
+
+        [BindProperty] public string SearchString { get; set; }
+
         [BindProperty] public  Model.Counceling Counceling { get; set; }
         [BindProperty] public Model.Client Client { get; set; }
         [BindProperty] public Model.Employee Employee { get; set; }
@@ -50,7 +53,13 @@ namespace DWBooking.Pages.Admin.Clients
 
             await councelingService.AddCouncelingAsync(Counceling);
                 return RedirectToPage("../Counceling/GetAllCounceling");
-            
+        }
+
+        public IActionResult OnPostNameSearch()
+        {
+            Employees = employeeService.GetEmployees().ToList();
+            Client = clientService.SearchClientName(SearchString);
+            return Page();
         }
     }
 }

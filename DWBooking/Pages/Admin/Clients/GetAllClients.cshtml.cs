@@ -15,6 +15,8 @@ namespace DWBooking.Pages.Admin.Clients
         private CouncelingService councelingService;
         public Client Client { get; set; }
         public List<Client> Clients { get; private set; }
+        [BindProperty] public string SearchString { get; set; }
+
         [BindProperty] public List<Model.Counceling> Councelings { get; set; }
 
         public GetAllClientsModel(ClientService clientService, CouncelingService councelingService) //Dependency Injection
@@ -32,6 +34,12 @@ namespace DWBooking.Pages.Admin.Clients
         public IActionResult OnPost(int id)
         {
             //Councelings = councelingService.GetCouncelingsByClient(id).ToList();
+            return Page();
+        }
+
+        public IActionResult OnPostSearchName()
+        {
+            Clients = clientService.SearchClientsByName(SearchString).ToList();
             return Page();
         }
     }

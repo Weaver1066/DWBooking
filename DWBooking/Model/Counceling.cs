@@ -36,5 +36,16 @@ namespace DWBooking.Model
             EmployeeID = employeeId;
             ClientID = clientId;
         }
+
+        public Counceling(int councelingId, string notes, DateTime date, int employeeId, Employee employee, int clientId, Client client)
+        {
+            CouncelingID = councelingId;
+            Notes = notes;
+            Date = date;
+            EmployeeID = employeeId;
+            Employee = employee;
+            ClientID = clientId;
+            Client = client;
+        }
     }
 }

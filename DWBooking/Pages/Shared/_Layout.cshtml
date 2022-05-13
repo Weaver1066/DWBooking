@@ -124,6 +124,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Counceling/GetAllCounceling"
                                aria-expanded="false">
                                 <i class="mdi mdi-av-timer"></i>
@@ -132,6 +133,8 @@
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Clients/AddClient"
+                            <a class="sidebar-link" asp-page="Admin/Clients/AddClient"
+
                                aria-expanded="false">
                                 <i class="mdi mdi-av-timer"></i>
                                 <span class="hide-menu">Opret samtale</span>
@@ -159,14 +162,17 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Employee/AddEmployee"
+
                                aria-expanded="false">
                                 <i class="mdi mdi-border-none"></i>
                                 <span class="hide-menu">Opret Medarbejder</span>
                             </a>
                         </li>
                         <li class="sidebar-item" style="border-top: 3px solid rgb(202, 225, 246);">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/GetEvents"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="Bruger/UserEvent/GetEvent"
+
                                aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Events</span>
@@ -208,7 +214,7 @@
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
         <main role="main" class="pb-3">
-            <div class="page-wrapper">
+            <div class="page-wrapper" style="height: 1080px;">
                 @RenderBody()
             </div>
         </main>

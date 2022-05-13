@@ -21,6 +21,8 @@
         </div>
     </div>
 </div>
+
+<div class="container-fluid">
 <div class="row">
     <div class="col-lg-12">
         <div class="card card-body">
@@ -44,28 +46,29 @@
     <div class="card card-body">
         <table class="table">
             <thead>
-                <tr>
-                    <th scope="col">Navn</th>
-                    <th scope="col">Rådgiver</th>
-                    <th scope="col">Dato</th>
-                    <th scope="col">Note</th>
-                </tr>
+            <tr>
+                <th scope="col">Navn</th>
+                <th scope="col">Rådgiver</th>
+                <th scope="col">Dato</th>
+                <th scope="col">Note</th>
+            </tr>
             </thead>
             <tbody>
-                @if (@Model.Councelings != null)
+            @if (@Model.Councelings != null)
+            {
+                foreach (var counceling in Model.Councelings)
                 {
-                    foreach (var counceling in Model.Councelings)
-                    {
-                        <tr>
-                            <td>@counceling.Client.Name</td>
-                            <td>@counceling.Employee.Name</td>
-                            <td>@counceling.Date</td>
-                            <td><a asp-route-id="@counceling.ClientID" asp-page="Notes">Rediger note</a></td>
+                    <tr>
+                        <td>@counceling.Client.Name</td>
+                        <td>@counceling.Employee.Name</td>
+                        <td>@counceling.Date</td>
+                        <td><a asp-route-id="@counceling.ClientID" asp-page="Notes">Rediger note</a></td>
 
-                        </tr>
-                    }
+                    </tr>
                 }
+            }
             </tbody>
         </table>
     </div>
+</div>
 </div>

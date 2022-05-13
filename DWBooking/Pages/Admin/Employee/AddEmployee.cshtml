@@ -1,4 +1,5 @@
 ﻿@page
+@using DWBooking.Model
 @model DWBooking.Pages.Admin.Employee.AddEmployeeModel
 @{
 }
@@ -46,31 +47,29 @@
                         <label asp-for="Employee.Address">Adresse<span class="help"></span></label>
                         <input asp-for="Employee.Address" type="text" class="form-control">
                     </div>
-                    <form method="post">
-                        <div class="form-group">
-                            <select asp-for="@Model.Role" id="roleSelect" name="roleSelect" class="form-select" aria-label="Default select example">
-                                <option selected>Vælg Stilling</option>
+                    <div class="form-group">
+                            <select asp-for="Employee.Role" id="roleSelect" name="roleSelect" class="form-select"  aria-label="Default select example">
+                                <option >Vælg Stilling</option>
                                 <option id="1" value="1">Admin</option>
                                 <option id="2" value="2">Rådgiver</option>
                                 <option id="3" value="3">Frivilig</option>
                             </select>
                             <input type="submit" asp-page-handler="SelectRole" value="RoleSelection" class="btn btn-primary" />
                         </div>
-                    </form>
                     @if (Model.Role ==1 || Model.Role == 2)
                     {
-                        <div id="extra" name="extra" style="display: none">
+                        <div id="extra" name="extra">
 
-                            <label asp-for="Employee.User.Username" class="control-label" for="username">Username</label>
-                            <input asp-for="Employee.User.Username" class="form-control" type="text" id="username" name="username">
+                            <label asp-for="Employee.User.Username" class="control-label">Username</label>
+                            <input asp-for="Employee.User.Username" class="form-control" type="text">
 
-                            <label asp-for="Employee.User.Password" class="control-label" for="password">Password</label>
-                            <input asp-for="Employee.User.Password" class="form-control" type="text" id="password" name="password">
+                            <label asp-for="Employee.User.Password" class="control-label">Password</label>
+                            <input asp-for="Employee.User.Password" class="form-control" type="text">
 
                         </div>
                     }
                     <div class="form-group">
-                        <input type="submit" value="Opret" class="btn btn-primary form-control"/>
+                        <input type="submit" asp-page-handler="AddEmployee" value="Opret" class="btn btn-primary form-control"/>
                     </div>
                 </form>
             </div>

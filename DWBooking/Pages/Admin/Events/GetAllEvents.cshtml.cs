@@ -21,7 +21,7 @@ namespace DWBooking.Pages.Admin.Events
         }
         public IActionResult OnGet()
         {
-            Events = eventService.GetEvents().ToList();
+            Events = eventService.SortByDateDescending().ToList();
             return Page();
         }
     }

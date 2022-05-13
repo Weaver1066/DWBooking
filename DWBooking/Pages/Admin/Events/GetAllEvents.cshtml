@@ -35,7 +35,7 @@
                 <th scope="col"></th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="event-table">
                 @if (@Model.Events != null)
                 {
                     foreach (var e in Model.Events)
@@ -44,7 +44,7 @@
                         {
                             <tr>
                                 <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Date.Date.ToShortDateString()</a></td>
-                                <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Date.TimeOfDay</a></td>
+                                <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Date.ToString("HH:mm")</a></td>
                                 <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Name</a></td>
                                 <td><a asp-route-id="@e.EventID" asp-page="UpdateEvent">Ret Event</a></td>
                                 <td><a asp-route-id="@e.EventID" asp-page="DeleteEvent">Slet event</a></td>
@@ -52,9 +52,9 @@
                         }
                         else if (e.Date.ToShortDateString() == DateTime.Now.ToShortDateString())
                         {
-                            <tr style="font-weight: bold;">
+                            <tr  class="custom-event" style="font-weight: bold;">
                                 <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Date.Date.ToShortDateString()</a></td>
-                                <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Date.TimeOfDay</a></td>
+                                <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Date.ToString("HH:mm")</a></td>
                                 <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Name</a></td>
                                 <td><a asp-route-id="@e.EventID" asp-page="UpdateEvent">Ret Event</a></td>
                                 <td><a asp-route-id="@e.EventID" asp-page="DeleteEvent">Slet event</a></td>
@@ -62,9 +62,9 @@
                         }
                         else
                         {
-                            <tr style="opacity: 0.6;">
+                            <tr  class="custom-table" style="opacity: 0.6;">
                                 <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Date.Date.ToShortDateString()</a></td>
-                                <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Date.TimeOfDay</a></td>
+                                <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Date.ToString("HH:mm")</a></td>
                                 <td><a asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Name</a></td>
                                 <td><a asp-route-id="@e.EventID" asp-page="UpdateEvent">Ret Event</a></td>
                                 <td><a asp-route-id="@e.EventID" asp-page="DeleteEvent">Slet event</a></td>

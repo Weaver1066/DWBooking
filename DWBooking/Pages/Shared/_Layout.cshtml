@@ -51,24 +51,14 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <div class="navbar-brand">
-                        <a href="index.html" class="logo">
-                            <!-- Logo icon -->
-                            <b class="logo-icon">
+                    <div class="navbar-brand" style="padding: 0; border-bottom: 3px solid #f2f4f5;; align-content: center;">
+                        <a asp-page="index" class="logo">
+
                                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                                 <!-- Dark Logo icon -->
-                                <img src="../../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo icon -->
-                                <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                            </b>
-                            <!--End Logo icon -->
-                            <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo text -->
-                                <img src="../../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                            </span>
+                                <img src="../../assets/images/koral.png" style="margin-left: 24px;" alt="homepage" class="dark-logo" />
+                                 @*Light Logo icon*@ 
+                                <img src="../../assets/images/koral.png" style="margin-left: 24px;" alt="homepage" class="light-logo" />
                         </a>
                     </div>
                     <!-- ============================================================== -->
@@ -82,7 +72,7 @@
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" style="height: 70px;" data-navbarbg="skin6">
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
@@ -95,8 +85,24 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li style="height: 50px; line-height: 50px; margin-right: 15px;"><label style="line-height: inherit" for="profile_picture">Hej Kirsten</label></li>
-                        <li style="height: 50px; line-height: 50px;"><img id="profile_picture" src="~/Assets/images/users/user-avatar.png" alt="user" class="rounded-circle" width="31"></li>
+                        @{
+                            if (Context.User.Identity.Name==null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="/Admin/Login/LoginPage">Login</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li style="height: 50px; line-height: 50px;"><img id="profile_picture" src="~/Assets/images/users/user-avatar.png" alt="user" class="rounded-circle" width="31">>
+                                    User: @Context.User.Identity.Name
+                                </li>
+
+                                <li style="height: 50px; line-height: 50px; margin-right: 15px;"><label style="line-height: inherit" for="profile_picture">
+                                    <a class="nav-link" asp-area="" asp-page="/Admin/Login/LogOut">Logout</a></label>
+                                </li>
+                            }
+                        }
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -110,20 +116,20 @@
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin5">
+        <aside class="left-sidebar" data-sidebarbg="skin5" >
             <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
+            <div class="scroll-sidebar" >
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item" style="border-top: 3px solid rgb(202, 225, 246);">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="Admin/Clients/GetAllClients"
+                        <li class="sidebar-item" style="border-top: 3px solid #f2f4f5;">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Clients/GetAllClients"
                                aria-expanded="false">
                                 <i class="mdi mdi-av-timer"></i>
                                 <span class="hide-menu">Klient oversigt</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                        <li class="sidebar-item" style="border-top: 3px solid #f2f4f5;">
 
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Counceling/GetAllCounceling"
                                aria-expanded="false">
@@ -132,29 +138,27 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Clients/AddClient"
-                            <a class="sidebar-link" asp-page="Admin/Clients/AddClient"
-
+                            <a class="sidebar-link" asp-page="/Admin/Clients/AddClient"
                                aria-expanded="false">
                                 <i class="mdi mdi-av-timer"></i>
                                 <span class="hide-menu">Opret samtale</span>
                             </a>
                         </li>
-                        <li class="sidebar-item" style="border-top: 3px solid rgb(202, 225, 246);">
+                        <li class="sidebar-item" style="border-top: 3px solid #f2f4f5;">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Events/GetAllEvents"
                                aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Events</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                        <li class="sidebar-item" >
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Events/AddEvent"
                                aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Opret event</span>
                             </a>
                         </li>
-                        <li class="sidebar-item" style="border-top: 3px solid rgb(202, 225, 246);">
+                        <li class="sidebar-item" style="border-top: 3px solid #f2f4f5;">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Admin/Employee/GetAllEmployees"
                                aria-expanded="false">
                                 <i class="mdi mdi-face"></i>
@@ -170,34 +174,14 @@
                                 <span class="hide-menu">Opret Medarbejder</span>
                             </a>
                         </li>
-                        <li class="sidebar-item" style="border-top: 3px solid rgb(202, 225, 246);">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="Bruger/UserEvent/GetEvent"
+                        <li class="sidebar-item" style="border-top: 3px solid #f2f4f5;">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-page="/Bruger/UserEvent/GetEvent"
 
                                aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Events</span>
                             </a>
                         </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        @{
-                            if (Context.User.Identity.Name==null)
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-page="/Admin/Login/LoginPage">Login</a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item nav-link mr-3">
-                                    User: @Context.User.Identity.Name
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-page="/Admin/Login/LogOut">Logout</a>
-                                </li>
-                            }
-                        }
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

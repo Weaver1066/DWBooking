@@ -30,35 +30,48 @@ namespace DWBooking.Services
 
         public async void EventNotification()
         {
+
             var client = new RestSharp.RestClient("https://gatewayapi.com/rest/");
             var apiToken = "RA7Ko7h0TMqK48i8ijq86k4QZO8tZfJDTTt_o8ligSLlE7DHrc0pBNqggmpRVgfX";
             client.Authenticator = new RestSharp.Authenticators
                 .HttpBasicAuthenticator(apiToken, "");
-
+            List<string> phoneNumbersList = new List<string>();
             var request = new RestSharp.RestRequest("mtsms", RestSharp.Method.Post);
             EventList = Eventservice.GetEvents().ToList();
-            TimeSpan TimeInterval = new TimeSpan(0, 12, 0, 0);
+            TimeSpan TimeInterval = new TimeSpan(1, 0, 0, 0);
             string CurrentDate = DateTime.Now.ToString("dd-MM-yyyy");
             foreach (var Events in EventList)
             {
                 if (Events.Date.ToString("dd-MM-yyyy") == Convert.ToDateTime(CurrentDate).AddDays(2).ToString("dd-MM-yyyy"))
                 {
+                    ParticipantList = ParticipantService.GetParticipantsByEvent(Events.EventID).ToList();
+
+                    // obj.datasou[] recipients = new[]
+                    //{
+
+                    //    new {msisdn = "60881066"}
+                    //};
                     foreach (Participant participants in ParticipantList)
                     {
-                        if (Events.EventID == participants.EventID && Events.Date.ToString("dd-MM-yyyy") == Convert.ToDateTime(CurrentDate).AddDays(2).ToString("dd-MM-yyyy"))
-                        {
-                            request.AddJsonBody(new
-                            {
-                                sender = "ExampleSMS",
-                                message = "Hello World",
-                                recipients = new[] { new { msisdn = participants.Phone } }
-                            });
-                            var response = await client.ExecuteAsync(request);
-                        }
+                        phoneNumbersList.Add(participants.Phone);
                     }
+
+                    request.AddJsonBody(new
+                    {
+                        sender = "ExampleSMS",
+                        message = "Hello World",
+                        //recipients = phonenumbers.ToArray(msisdn)
+                        //recipients = new []{msisdn};
+
+
+                    });
+                    var response = await client.ExecuteAsync(request);
+
                 }
             }
             Thread.Sleep(TimeInterval);
+            EventNotification();
+
         }
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DWBooking.Model;
 
 namespace DWBooking.Pages
 {
@@ -17,9 +18,9 @@ namespace DWBooking.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+           return RedirectToPage("/Admin/Counceling/GetAllCounceling");
         }
     }
 }

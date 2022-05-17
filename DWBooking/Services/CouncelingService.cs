@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DWBooking.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DWBooking.Services
 {
@@ -19,11 +20,11 @@ namespace DWBooking.Services
         public CouncelingService(GenericDbService<Counceling> dbService)
         {
             DbService = dbService;
-            CouncelingList = MockData.MockCouncelings.GetMockCouncelings();
-            foreach (Counceling e in CouncelingList)
-            {
-                DbService.AddObjectAsync(e);
-            }
+            //CouncelingList = MockData.MockCouncelings.GetMockCouncelings();
+            //foreach (Counceling e in CouncelingList)
+            //{
+            //    DbService.AddObjectAsync(e);
+            //}
 
             CouncelingList = DbService.GetObjectsAsync().Result.ToList();
         }
@@ -48,6 +49,34 @@ namespace DWBooking.Services
             return CouncelingList;
         }
 
+        public async Task UpdateCouncelingAsync(Counceling c)
+        {
+            if (c != null)
+            {
+                foreach (Counceling i in CouncelingList)
+                {
+                    if (i.CouncelingID == c.CouncelingID)
+                    {
+                        i.Notes = c.Notes;
+                    }
+                }
+                await DbService.UpdateObjectAsync(c);
+            }
+        }
+
+        public async Task<Counceling> GetCouncelingById(int id)
+        {
+            Counceling counceling;
+            using (var context = new DWBookingDbContext())
+            {
+               counceling  = context.Councelings.Include(u => u.Client)
+                   .Include(i => i.Employee)
+                   .AsNoTracking().FirstOrDefault(u => u.CouncelingID == id);
+            }
+
+            return counceling;
+        }
+
         public async Task<IEnumerable<Counceling>> GetCouncelingsAndEmplyeesAndClients()
         {
             List<Counceling> templist = new List<Counceling>();
@@ -59,6 +88,8 @@ namespace DWBooking.Services
 
             return templist;
         }
+
+
 
 
         public IEnumerable<Counceling> GetCouncelingsByClient(int id, IEnumerable<Counceling> temp)

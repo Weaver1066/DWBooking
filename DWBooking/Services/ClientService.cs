@@ -57,6 +57,19 @@ namespace DWBooking.Services
             return null;
         }
 
+        public Client GetClientById(int id)
+        {
+            foreach (var c in ClientList)
+            {
+                if (c.ClientID == id)
+                {
+                    return c;
+                }
+            }
+
+            return null;
+        }
+
         public Client SearchClientName(string name)
         {
             foreach (var client in ClientList)

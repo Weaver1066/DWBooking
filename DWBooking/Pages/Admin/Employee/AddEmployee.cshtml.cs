@@ -42,8 +42,8 @@ namespace DWBooking.Pages.Admin.Employee
 
         public IActionResult OnPostSelectRole()
         {
+            Employee.Role = Convert.ToInt32(Request.Form[("roleSelect")]);
             Role = Convert.ToInt32(Request.Form[("roleSelect")]);
-
             return Page();
         }
     }

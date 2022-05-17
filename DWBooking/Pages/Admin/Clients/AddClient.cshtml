@@ -50,7 +50,7 @@
                 <form method="post" class="form-horizontal mt-4">
                     <div class="form-group">
                         <label class="text-left">Navn<span class="help"></span></label>
-                        <input asp-for="Client.Name" type="text" class="form-control" placeholder="George deo...">
+                        <input asp-for="Client.Name" type="text" class="form-control" placeholder="Navn">
                         <span asp-validation-for="Client.Name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -65,15 +65,14 @@
                     </div>
                     <div class="form-group">
                         <label class="text-left">Dato<span class="help"></span></label>
-                        <input asp-for="Date" type="date" value="dd-mm-yyyy" class="form-control" placeholder="">
-                        <span asp-validation-for="Counceling.Date" class="text-danger"></span>
+                        <input asp-for="Counceling.Date" type="date" value="dd-mm-yyyy" class="form-control" placeholder="">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Tid<span class="help"></span></label>
-                        <input asp-for="Time" type="time" class="form-control">
-                        <span asp-validation-for="Counceling.Date" class="text-danger"></span>
+                        <input asp-for="@Model.Time" type="time" class="form-control">
+
                     </div>
-                    <div>
+                    <div  class="form-group">
                         <select asp-for="Employee.EmployeeID" class="form-select" aria-label="Default select example">
                             <option value="" selected disabled hidden>Vælg Rådgiver</option>
                             @foreach (Model.Employee employee in Model.Employees)

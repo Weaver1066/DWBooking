@@ -39,17 +39,14 @@ namespace DWBooking.Pages.Admin.Clients
         public async Task<IActionResult> OnPostCreateCounceling()
         {
             Employees = employeeService.GetEmployees().ToList();
-            Counceling.Date = Convert.ToDateTime(Date.ToShortDateString() + " " + Time.ToShortTimeString());
+            Counceling.Date = Convert.ToDateTime(Counceling.Date.ToShortDateString() + " " + Time.ToShortTimeString());
             if (clientService.CheckPhone(Client.Phone) == null)
             {
                 await clientService.AddClientAsync(Client);
             }
-
             Client = clientService.CheckPhone(Client.Phone);
-            //Counceling.Client = Client;
             Counceling.ClientID = Client.ClientID;
             Employee = employeeService.GetEmployee(Employee.EmployeeID);
-            //Counceling.Employee = Employee;
             Counceling.EmployeeID = Employee.EmployeeID;
 
 

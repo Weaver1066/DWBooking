@@ -90,10 +90,20 @@ namespace DWBooking.Services
         }
 
 
-
+        public IEnumerable<Counceling> GetCouncelingsByDate(DateTime date, IEnumerable<Counceling> temp)
+        {
+            List<Counceling> templist = new List<Counceling>();
+            foreach (var c in temp)
+            {
+                if (c.Date.ToString("d") == date.ToString("d"))
+                {
+                    templist.Add(c);
+                }
+            }
+            return templist;
+        }
 
         public IEnumerable<Counceling> GetCouncelingsByClient(int id, IEnumerable<Counceling> temp)
-
         {
             List<Counceling> templist = new List<Counceling>();
             foreach (var c in temp)

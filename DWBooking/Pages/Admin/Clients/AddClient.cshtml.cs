@@ -18,6 +18,8 @@ namespace DWBooking.Pages.Admin.Clients
         public List<Model.Employee> Employees { get; private set; }
 
         [BindProperty] public string SearchString { get; set; }
+        [BindProperty] public DateTime Date { get; set; }
+        [BindProperty] public DateTime Time { get; set; }
 
         [BindProperty] public  Model.Counceling Counceling { get; set; }
         [BindProperty] public Model.Client Client { get; set; }
@@ -34,10 +36,10 @@ namespace DWBooking.Pages.Admin.Clients
             return Page();
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostCreateCounceling()
         {
             Employees = employeeService.GetEmployees().ToList();
-           
+            Counceling.Date = Convert.ToDateTime(Date.ToShortDateString() + " " + Time.ToShortTimeString());
             if (clientService.CheckPhone(Client.Phone) == null)
             {
                 await clientService.AddClientAsync(Client);

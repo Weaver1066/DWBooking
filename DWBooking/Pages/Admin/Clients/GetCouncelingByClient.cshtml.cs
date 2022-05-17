@@ -20,12 +20,14 @@ namespace DWBooking.Pages.Admin.Clients
         [BindProperty] public List<Model.Counceling> Councelingss { get; set; }
         [BindProperty] public Client Client { get; set; }
 
-        public GetCouncelingByClientModel(CouncelingService councelingService)
+        public GetCouncelingByClientModel(CouncelingService councelingService, ClientService clientService)
         {
             this.councelingService = councelingService;
+            this.clientService = clientService;
         }
         public async Task<IActionResult> OnGet(int id)
         {
+            Client = clientService.GetClientById(id);
             Councelings = councelingService.GetCouncelingsAndEmplyeesAndClients().Result.ToList();
             Councelings = councelingService.GetCouncelingsByClient(id, Councelings).ToList();
             return Page();

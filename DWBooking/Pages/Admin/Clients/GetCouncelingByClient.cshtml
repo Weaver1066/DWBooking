@@ -5,7 +5,7 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-5">
-            <h4 class="page-title" style="text-align: left;">Klient oversigt</h4>
+            <h4 class="page-title" style="text-align: left;">@Model.Client.Name</h4>
         </div>
         <div class="col-7 align-self-center">
             <div class="d-flex align-items-center justify-content-end">
@@ -14,7 +14,7 @@
                         <li class="breadcrumb-item">
                             <a href="#">Home</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">klient oversigt</li>
+                        <li class="breadcrumb-item active" aria-current="page">@Model.Client.Name</li>
                     </ol>
                 </nav>
             </div>
@@ -62,8 +62,7 @@
                         <td>@counceling.Client.Name</td>
                         <td>@counceling.Employee.Name</td>
                         <td>@counceling.Date</td>
-                        <td><a asp-route-id="@counceling.ClientID" asp-page="Notes">Rediger note</a></td>
-
+                        <td><a asp-route-id="@counceling.CouncelingID" asp-page="Notes">Rediger note</a></td>
                     </tr>
                 }
             }

@@ -16,9 +16,10 @@ namespace DWBooking.Pages.Admin.Clients
         private EmployeeService employeeService;
 
         public List<Model.Counceling> Councelings { get; private set; }
-
         [BindProperty] public List<Model.Counceling> Councelingss { get; set; }
         [BindProperty] public Client Client { get; set; }
+
+        [BindProperty] public DateTime Date { get; set; }
 
         public GetCouncelingByClientModel(CouncelingService councelingService, ClientService clientService)
         {
@@ -30,6 +31,15 @@ namespace DWBooking.Pages.Admin.Clients
             Client = clientService.GetClientById(id);
             Councelings = councelingService.GetCouncelingsAndEmplyeesAndClients().Result.ToList();
             Councelings = councelingService.GetCouncelingsByClient(id, Councelings).ToList();
+
+            return Page();
+        }
+
+        public IActionResult OnPostDateSearch()
+        {
+
+            Councelings = councelingService.GetCouncelingsAndEmplyeesAndClients().Result.ToList();
+            Councelings = councelingService.GetCouncelingsByDate(Date, Councelings).ToList();
             return Page();
         }
     }

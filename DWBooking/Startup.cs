@@ -22,6 +22,7 @@ namespace DWBooking
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -55,6 +56,11 @@ namespace DWBooking
             //Setup of services for Users
             services.AddSingleton<GenericDbService<User>, GenericDbService<User>>();
             services.AddSingleton<UserService, UserService>();
+
+            //Setup of service for API notification
+            services.AddSingleton<NotificationService, NotificationService>();
+
+
 
             //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions =>
             //{

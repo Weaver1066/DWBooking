@@ -17,7 +17,7 @@ namespace DWUnitTest
 
         public void BeforeTest()
         {
-            _client = new Client("Nadina Al-Hajid", "22324252", "Nadina@Gmaik.com");
+            _client = new Client("Nadina Al-Hajid", "22324252", "Nadina@Gmail.com");
         }
         [TestMethod]
         public void TestName()
@@ -52,12 +52,28 @@ namespace DWUnitTest
 
             try
             {
-                _client.Phone = "12345678";
+                _client.Phone = "sdagsasd";
                 Assert.Fail();
             }
             catch (Exception e)
             {
                 Assert.AreEqual("nummeret skal være 8 tal", e.Message);
+            }
+        }
+
+        [TestMethod]
+
+        public void TestEmail()
+        {
+            Assert.AreEqual("Nadina@Gmail.com", _client.Email);
+            try
+            {
+                _client.Email = "hasd23com";
+                Assert.Fail();
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Dette er ikke en valid email", e.Message);
             }
         }
     }

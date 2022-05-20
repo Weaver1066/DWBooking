@@ -45,6 +45,22 @@ namespace DWBooking.Services
 
             return null;
         }
+        public async Task UpdateEmployeeAsync(Employee e)
+        {
+            if (e != null)
+            {
+                foreach (Employee i in EmployeeList)
+                {
+                    if (i.EmployeeID == e.EmployeeID)
+                    {
+                        i.Name = e.Name;
+                        i.Address = e.Address;
+                        i.Age = e.Age;
+                    }
+                }
+                await DbService.UpdateObjectAsync(e);
+            }
+        }
 
 
     }

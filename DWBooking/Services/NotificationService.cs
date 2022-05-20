@@ -46,27 +46,49 @@ namespace DWBooking.Services
                 {
                     ParticipantList = ParticipantService.GetParticipantsByEvent(Events.EventID).ToList();
 
-                    // obj.datasou[] recipients = new[]
-                    //{
-
-                    //    new {msisdn = "60881066"}
-                    //};
                     foreach (Participant participants in ParticipantList)
                     {
-                        phoneNumbersList.Add(participants.Phone);
+                        request.AddJsonBody(new
+                        {
+                            sender = "ExampleSMS",
+                            message = "Hello World",
+                            recipients = new[] { new { msisdn = participants.Phone} }
+                        });
+                        var response = await client.ExecuteAsync(request);
                     }
+                }
+            }
+            Thread.Sleep(TimeInterval);
+            EventNotification();
 
-                    request.AddJsonBody(new
+        }
+        public async void ClientNotification()
+        {
+
+            var client = new RestSharp.RestClient("https://gatewayapi.com/rest/");
+            var apiToken = "RA7Ko7h0TMqK48i8ijq86k4QZO8tZfJDTTt_o8ligSLlE7DHrc0pBNqggmpRVgfX";
+            client.Authenticator = new RestSharp.Authenticators
+                .HttpBasicAuthenticator(apiToken, "");
+            List<string> phoneNumbersList = new List<string>();
+            var request = new RestSharp.RestRequest("mtsms", RestSharp.Method.Post);
+            CouncelingList = CouncelingService.GetCouncelingsAndEmplyeesAndClients().Result.ToList();
+            TimeSpan TimeInterval = new TimeSpan(1, 0, 0, 0);
+            string CurrentDate = DateTime.Now.ToString("dd-MM-yyyy");
+            foreach (var Councelings in CouncelingList)
+            {
+                if (Councelings.Date.ToString("dd-MM-yyyy") == Convert.ToDateTime(CurrentDate).AddDays(2).ToString("dd-MM-yyyy"))
+                {
+
+                    foreach (Counceling counclings in CouncelingList)
                     {
-                        sender = "ExampleSMS",
-                        message = "Hello World",
-                        //recipients = phonenumbers.ToArray(msisdn)
-                        //recipients = new []{msisdn};
-
-
-                    });
-                    var response = await client.ExecuteAsync(request);
-
+                        request.AddJsonBody(new
+                        {
+                            sender = "ExampleSMS",
+                            message = "Hello World",
+                            recipients = new[] { new { msisdn = counclings.Client.Phone } }
+                        });
+                        var response = await client.ExecuteAsync(request);
+                    }
                 }
             }
             Thread.Sleep(TimeInterval);

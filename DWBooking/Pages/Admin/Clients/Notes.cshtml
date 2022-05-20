@@ -165,9 +165,9 @@
                 </div>
                 <div class="col-md-6 col-sm-9">
                     <div class="flex-box">
-                        <textarea asp-for="Counceling.Notes" id="textarea1"
+                        <textarea asp-for="@Model.Note" id="textarea1"
                                   class="input shadow"
-                                  name="name"
+                                  name="NoteArea"
                                   rows="15"
                                   cols="100"
                                   placeholder="Your text here ">
@@ -175,7 +175,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <button type="submit">Gem</button>
+                    <button asp-route-id="@Model.Counceling.CouncelingID" type="submit">Gem</button>
                 </div>
             </div>
         </form>

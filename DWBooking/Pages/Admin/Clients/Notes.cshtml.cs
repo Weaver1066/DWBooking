@@ -13,17 +13,20 @@ namespace DWBooking.Pages.Admin.Clients
     {
         private CouncelingService councelingService;
 
+        [BindProperty] public Model.Counceling Counceling { get; set; }
+        [BindProperty] public string Note { get; set; }
+
         public NotesModel(CouncelingService councelingService)
         {
             this.councelingService = councelingService;
         }
 
-        [BindProperty] public Model.Counceling Counceling { get; set; }
+
         public IActionResult OnGet(int id)
         {
 
             Counceling = councelingService.GetCouncelingById(id).Result;
-
+            Note = Counceling.Notes;
             if (Counceling == null)
                 return RedirectToPage("/NotFound"); //NotFound er ikke defineret endnu
 
@@ -31,8 +34,11 @@ namespace DWBooking.Pages.Admin.Clients
             
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPost(int id)
         {
+
+            Counceling = councelingService.GetCouncelingById(id).Result;
+            Counceling.Notes = Convert.ToString(Request.Form[("NoteArea")]);
             if (!ModelState.IsValid)
             {
                 return Page();

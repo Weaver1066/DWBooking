@@ -50,7 +50,7 @@ namespace DWBooking.Services
                     {
                         request.AddJsonBody(new
                         {
-                            sender = "ExampleSMS",
+                            sender = "Diversity Works",
                             message = "Hello World",
                             recipients = new[] { new { msisdn = participants.Phone} }
                         });
@@ -60,11 +60,9 @@ namespace DWBooking.Services
             }
             Thread.Sleep(TimeInterval);
             EventNotification();
-
         }
         public async void ClientNotification()
         {
-
             var client = new RestSharp.RestClient("https://gatewayapi.com/rest/");
             var apiToken = "RA7Ko7h0TMqK48i8ijq86k4QZO8tZfJDTTt_o8ligSLlE7DHrc0pBNqggmpRVgfX";
             client.Authenticator = new RestSharp.Authenticators
@@ -83,7 +81,7 @@ namespace DWBooking.Services
                     {
                         request.AddJsonBody(new
                         {
-                            sender = "ExampleSMS",
+                            sender = "Diversity Works",
                             message = "Hello World",
                             recipients = new[] { new { msisdn = counclings.Client.Phone } }
                         });
@@ -92,7 +90,7 @@ namespace DWBooking.Services
                 }
             }
             Thread.Sleep(TimeInterval);
-            EventNotification();
+            ClientNotification();
 
         }
     }

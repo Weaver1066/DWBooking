@@ -71,7 +71,7 @@ namespace DWBooking.Services
             {
                counceling  = context.Councelings.Include(u => u.Client)
                    .Include(i => i.Employee)
-                   .AsNoTracking().FirstOrDefault(u => u.CouncelingID == id);
+                   .FirstOrDefault(u => u.CouncelingID == id);
             }
 
             return counceling;

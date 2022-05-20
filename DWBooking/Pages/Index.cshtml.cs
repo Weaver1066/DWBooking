@@ -23,7 +23,7 @@ namespace DWBooking.Pages
 
         public IActionResult OnGet()
         {
-            NotificationService.EventNotification();
+           //NotificationService.EventNotification();
            return RedirectToPage("/Admin/Counceling/GetAllCounceling");
         }
     }

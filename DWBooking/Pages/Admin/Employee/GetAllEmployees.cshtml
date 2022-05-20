@@ -48,9 +48,9 @@
                                     <td>@e.Name</td>
                                     <td>@e.Phone</td>
                                     <td>@e.Email</td>
-                                    <td>@e.Age.Date</td>
+                                    <td>@e.ConvertBirthdateToAge()</td>
                                     <td>@e.Address</td>
-                                    <td>@e.Role</td>
+                                    <td>@e.ConvertRoleToString()</td>
                                     <td>@e.UserID</td>
                                     <td><a style="color: black;" asp-route-id="@e.EmployeeID" asp-page="UpdateEmployee">Ret Infomation</a></td>
 

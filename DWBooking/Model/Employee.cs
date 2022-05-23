@@ -42,5 +42,24 @@ namespace DWBooking.Model
             User = user;
         }
 
+        public string ConvertRoleToString()
+        {
+            if (Role == 1)
+                return "Admin";
+            else if (Role == 2)
+                return "Rådgiver";
+            else if (Role == 3)
+                return "Frivillig";
+            else
+                return null;
+        }
+
+        public int ConvertBirthdateToAge()
+        {
+            int age;
+            age = DateTime.Now.Subtract(Age).Days;
+            age /= 365;
+            return age;
+        }
     }
 }

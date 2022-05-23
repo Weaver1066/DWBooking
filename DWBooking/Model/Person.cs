@@ -57,36 +57,36 @@ namespace DWBooking.Model
 
         private static void CheckName(string name)
         {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException("Navn kan ikke være tomt");
-            }
-            else if (name.Length > 50)
-            {
-                throw new ArgumentException("Navn må max være 50 tegn");
-            }
+            //if (string.IsNullOrWhiteSpace(name))
+            //{
+            //    throw new ArgumentException("Navn kan ikke være tomt");
+            //}
+            //else if (name.Length > 50)
+            //{
+            //    throw new ArgumentException("Navn må max være 50 tegn");
+            //}
         }
 
         private static void CheckPhone(string phone)
         {
-            int temp;
-            bool result = int.TryParse(phone, out temp);
-            if (string.IsNullOrWhiteSpace(phone))
-            {
-                throw new ArgumentException("Telefon kan ikke være tomt");
-            }
-            else if (phone.Length != 8 || result == false)
-            {
-                throw new ArgumentException("nummeret skal være 8 tal");
-            }
+            //int temp;
+            //bool result = int.TryParse(phone, out temp);
+            //if (string.IsNullOrWhiteSpace(phone))
+            //{
+            //    throw new ArgumentException("Telefon kan ikke være tomt");
+            //}
+            //else if (phone.Length != 8 || result == false)
+            //{
+            //    throw new ArgumentException("nummeret skal være 8 tal");
+            //}
         }
 
         private static void CheckMail(string email)
         { 
-            if ((new EmailAddressAttribute().IsValid(email)) == false)
-            {
-                throw new ArgumentException("Dette er ikke en valid email");
-            }
+            //if ((new EmailAddressAttribute().IsValid(email)) == false)
+            //{
+            //    throw new ArgumentException("Dette er ikke en valid email");
+            //}
         }
 
 

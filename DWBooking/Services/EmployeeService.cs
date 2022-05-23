@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DWBooking.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace DWBooking.Services
 {
@@ -60,6 +61,18 @@ namespace DWBooking.Services
                 }
                 await DbService.UpdateObjectAsync(e);
             }
+        }
+
+        public async Task<IEnumerable<Employee>> GetEmployeesAndUsers()
+        {
+            List<Employee> templist = new List<Employee>();
+
+            using (var context = new DWBookingDbContext())
+            {
+                templist = context.Employees.Include(u => u.User).ToList();
+            }
+
+            return templist;
         }
 
 

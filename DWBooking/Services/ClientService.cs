@@ -96,5 +96,21 @@ namespace DWBooking.Services
 
             return temp;
         }
+        public async Task UpdateClientAsync(Client e)
+        {
+            if (e != null)
+            {
+                foreach (Client i in ClientList)
+                {
+                    if (i.ClientID == e.ClientID)
+                    {
+                        i.Name = e.Name;
+                        i.Email = e.Email;
+                        i.Phone = e.Phone;
+                    }
+                }
+                await DbService.UpdateObjectAsync(e);
+            }
+        }
     }
 }

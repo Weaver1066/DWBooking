@@ -24,6 +24,8 @@ namespace DWBooking.Pages.Admin.Clients
         [BindProperty] public  Model.Counceling Counceling { get; set; }
         [BindProperty] public Model.Client Client { get; set; }
         [BindProperty] public Model.Employee Employee { get; set; }
+
+        [BindProperty] public string PhoneError { get; set; }
         public AddClientModel(CouncelingService councelingService, ClientService clientService, EmployeeService employeeService) //Dependency Injection
         {
             this.councelingService = councelingService;
@@ -38,11 +40,12 @@ namespace DWBooking.Pages.Admin.Clients
 
         public async Task<IActionResult> OnPostCreateCounceling()
         {
+
             Employees = employeeService.GetEmployees().ToList();
             Counceling.Date = Convert.ToDateTime(Counceling.Date.ToShortDateString() + " " + Time.ToShortTimeString());
             if (clientService.CheckPhone(Client.Phone) == null)
             {
-                await clientService.AddClientAsync(Client);
+                     await clientService.AddClientAsync(Client);
             }
             Client = clientService.CheckPhone(Client.Phone);
             Counceling.ClientID = Client.ClientID;
@@ -52,6 +55,7 @@ namespace DWBooking.Pages.Admin.Clients
 
             await councelingService.AddCouncelingAsync(Counceling);
                 return RedirectToPage("../Counceling/GetAllCounceling");
+
         }
 
         public IActionResult OnPostNameSearch()

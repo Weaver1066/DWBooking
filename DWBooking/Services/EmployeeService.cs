@@ -46,7 +46,7 @@ namespace DWBooking.Services
 
             return null;
         }
-        public async Task UpdateEventAsync(Employee e)
+        public async Task UpdateEmployeeAsync(Employee e)
         {
             if (e != null)
             {

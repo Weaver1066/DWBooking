@@ -33,6 +33,7 @@
                         <th scope="col">Borger</th>
                         <th scope="col">Rådgiver</th>
                         <th scope="col">Dato</th>
+                        <th scope="col">Tidspunkt</th>
                         <th scope="col">Emne</th>
                         <th scope="col">Noter</th>
                     </tr>
@@ -45,7 +46,8 @@
                             <tr>
                                 <td>@counceling.Client.Name</td>
                                 <td>@counceling.Employee.Name</td>
-                                <td>@counceling.Date</td>
+                                <td>@counceling.Date.ToString("D")</td>
+                                <td>@counceling.Date.ToString("t")</td>
                                 <td>Rådgivning</td>
                                 <td><a asp-route-id="@counceling.CouncelingID" asp-page="/Admin/Clients/Notes">Skriv Note</a></td>
 

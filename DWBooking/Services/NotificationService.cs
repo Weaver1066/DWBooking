@@ -38,7 +38,7 @@ namespace DWBooking.Services
             List<string> phoneNumbersList = new List<string>();
             var request = new RestSharp.RestRequest("mtsms", RestSharp.Method.Post);
             EventList = Eventservice.GetEvents().ToList();
-            TimeSpan TimeInterval = new TimeSpan(1, 0, 0, 0);
+            TimeSpan TimeInterval1 = new TimeSpan(1, 0, 0, 0);
             string CurrentDate = DateTime.Now.ToString("dd-MM-yyyy");
             foreach (var Events in EventList)
             {
@@ -48,17 +48,19 @@ namespace DWBooking.Services
 
                     foreach (Participant participants in ParticipantList)
                     {
+                        string message =
+                            $"Hej. Dette er en påmindelse om {Events.Name} den {Events.Date.ToShortDateString()}  Mvh Diversity Works";
                         request.AddJsonBody(new
                         {
-                            sender = "ExampleSMS",
-                            message = "Hello World",
+                            sender = "DW",
+                            message = message,
                             recipients = new[] { new { msisdn = participants.Phone} }
                         });
                         var response = await client.ExecuteAsync(request);
                     }
                 }
             }
-            Thread.Sleep(TimeInterval);
+            Thread.Sleep(TimeInterval1);
             EventNotification();
 
         }
@@ -72,7 +74,7 @@ namespace DWBooking.Services
             List<string> phoneNumbersList = new List<string>();
             var request = new RestSharp.RestRequest("mtsms", RestSharp.Method.Post);
             CouncelingList = CouncelingService.GetCouncelingsAndEmplyeesAndClients().Result.ToList();
-            TimeSpan TimeInterval = new TimeSpan(1, 0, 0, 0);
+            TimeSpan TimeInterval2 = new TimeSpan(1, 0, 0, 0);
             string CurrentDate = DateTime.Now.ToString("dd-MM-yyyy");
             foreach (var Councelings in CouncelingList)
             {
@@ -83,16 +85,16 @@ namespace DWBooking.Services
                     {
                         request.AddJsonBody(new
                         {
-                            sender = "ExampleSMS",
-                            message = "Hello World",
+                            sender = "DW",
+                            message = "Hej. Vi skriver til dig for at påminde om den tid du har bestilt " + counclings.Date.ToShortDateString()+ " til en samtale. Hvis du har brug for at aflyse kan du ringe 35 39 69 85. Mvh Diversity Works",
                             recipients = new[] { new { msisdn = counclings.Client.Phone } }
                         });
                         var response = await client.ExecuteAsync(request);
                     }
                 }
             }
-            Thread.Sleep(TimeInterval);
-            EventNotification();
+            Thread.Sleep(TimeInterval2);
+            ClientNotification();
 
         }
     }

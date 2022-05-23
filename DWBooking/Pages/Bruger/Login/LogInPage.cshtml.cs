@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using DWBooking.Model;
 using DWBooking.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -12,15 +11,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace DWBooking.Pages.Admin.Login
+namespace DWBooking.Pages.Bruger.Login
 {
-    public class LoginPageModel : PageModel
+    public class LogInPageModel : PageModel
     {
         private UserService _userService;
+        private EmployeeService _employeeService;
 
-        public LoginPageModel(UserService userService)
+        public LogInPageModel(UserService userService, EmployeeService employeeService)
         {
             _userService = userService;
+            _employeeService = employeeService;
         }
 
         [BindProperty]
@@ -36,25 +37,27 @@ namespace DWBooking.Pages.Admin.Login
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            List<User> users = _userService.Users;
-            foreach (User user in users)
+            List<Model.Employee> employees = _employeeService.GetEmployeesAndUsers().Result.ToList();
+            foreach (Model.Employee employee in employees)
             {
-                if (UserName == user.Username)
+                if(employee.User != null)
+                if (UserName == employee.User.Username)
                 {
                     var passwordHasher = new PasswordHasher<string>();
-                    if (passwordHasher.VerifyHashedPassword(null, user.Password, Password) == PasswordVerificationResult.Success)
-                    {
+                    //if (passwordHasher.VerifyHashedPassword(null, employee.User.Password, Password) == PasswordVerificationResult.Success)
+                    //{
                         var claims = new List<Claim>
                         {
                             new Claim(ClaimTypes.Name, UserName)
                         };
 
-                        if (UserName == "admin") claims.Add(new Claim(ClaimTypes.Role, "admin"));
+                        if (employee.Role == 1) claims.Add(new Claim(ClaimTypes.Role, "admin"));
+                        else if (employee.Role == 2) claims.Add(new Claim(ClaimTypes.Role, "rådgiver"));
 
                         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
                         return RedirectToPage("/index");
-                    }
+                    //}
                 }
             }
 

@@ -25,7 +25,7 @@ namespace DWBooking.Pages
         {
             //NotificationService.EventNotification();
             //NotificationService.ClientNotification();
-           return RedirectToPage("/Admin/Counceling/GetAllCounceling");
+           return RedirectToPage("/Bruger/UserEvent/GetEvent");
         }
     }
 }

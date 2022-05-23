@@ -1,0 +1,48 @@
+﻿@page
+@model DWBooking.Pages.Bruger.Login.LogInPageModel
+@{
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-5">
+                <h4 class="page-title" style="text-align: left;">Login</h4>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div>
+            @Model.Message
+        </div>
+    <div class="card card-body">
+        <form method="post">
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="UserName" class="col-form-label "></label>
+                        <div>
+                            <input type="text" class="form-control" asp-for="UserName"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="Password" class="col-form-label"></label>
+                        <div>
+                            <input type="password" class="form-control" asp-for="Password"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <button class="btn btn-primary">Log ind</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+
+}

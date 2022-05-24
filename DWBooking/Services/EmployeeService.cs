@@ -65,7 +65,7 @@ namespace DWBooking.Services
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
-        public async Task UpdateEventAsync(Employee e)
+        public async Task UpdateEmployeeAsync(Employee e)
         {
             if (e != null)
             {

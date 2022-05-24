@@ -42,6 +42,11 @@ namespace DWBooking.Model
             User = user;
         }
 
+
+        /// <summary>
+        /// Converts the role integer into text
+        /// </summary>
+        /// <returns>string role</returns>
         public string ConvertRoleToString()
         {
             if (Role == 1)
@@ -53,6 +58,11 @@ namespace DWBooking.Model
             else
                 return null;
         }
+
+        /// <summary>
+        /// Converts a date of birth into age in years
+        /// </summary>
+        /// <returns>returns age as integer</returns>
 
         public int ConvertBirthdateToAge()
         {

@@ -23,19 +23,31 @@ namespace DWBooking.Services
             EmployeeList = DbService.GetObjectsAsync().Result.ToList();
         }
 
-        
+        /// <summary>
+        /// Add a new employee to the database and to the Employee list.
+        /// </summary>
+        /// <param name="employee"></param>
         public async void AddEmployee(Employee employee)
         {
             EmployeeList.Add(employee);
             await DbService.AddObjectAsync(employee);
         }
-
+        /// <summary>
+        /// Gets the entire list of Employees and returns it.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Employee> GetEmployees()
         {
             return EmployeeList;
         }
         // Returnere listen af employees
 
+        /// <summary>
+        /// Finds a specific Employee using the Employee Id to go through
+        /// all the employees until it finds a matching ID and returns it.
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
         public Employee GetEmployee(int employeeId)
         {
             foreach (Employee employee in EmployeeList)
@@ -46,6 +58,13 @@ namespace DWBooking.Services
 
             return null;
         }
+
+        /// <summary>
+        /// Takes a Employee object and finds the corresponding Employee in the list
+        /// using the Id and then updates the Information attached to that Employee
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
         public async Task UpdateEventAsync(Employee e)
         {
             if (e != null)
@@ -62,7 +81,10 @@ namespace DWBooking.Services
                 await DbService.UpdateObjectAsync(e);
             }
         }
-
+        /// <summary>
+        /// Gets a list of Employees and their corresponding Users.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Employee>> GetEmployeesAndUsers()
         {
             List<Employee> templist = new List<Employee>();

@@ -21,3 +21,12 @@
 #event-table tr td a{
     color: black;
 }
+
+.card {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    overflow-y: scroll;
+}
+
+.noscroll::-webkit-scrollbar {
+    display: none;
+}

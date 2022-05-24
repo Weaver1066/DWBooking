@@ -21,32 +21,24 @@
         </div>
     </div>
 </div>
-<div class="table-responsive">
-    <div class="card card-body">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Dato</th>
-                    <th scope="col">Tidspunkt</th>
-                    <th scope="col">Titel</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (@Model.Events != null)
+<div class="container-fluid">
+    <div class="row">
+        @if (@Model.Events != null)
+        {
+            foreach (var e in Model.Events)
+            {
+                if(e.Date.ToString("MM/dd/yyyy") == DateTime.Now.ToString("MM/dd/yyyy") || e.Date > DateTime.Now)
                 {
-                    foreach (var e in Model.Events)
-                    {
-                        <tr>
-                            <td>@e.Date.Date.ToShortDateString()</td>
-                            <td>@e.Date.TimeOfDay</td>
-                            <td>@e.Name</td>
-                            <td><a class="button" type="btn" asp-page="AddParticipant" asp-route-id="@e.EventID">Deltag</a></td>
-                        </tr>
-                    }
+                    <a class="col-lg-4" style="color: black" type="btn" asp-page="AddParticipant" asp-route-id="@e.EventID">
+                        <div class=" card card-body col-lg-12" style="overflow: hidden; height: 500px;">
+                            <img src="../../assets/images/Eventplaceholder.jpg" style="width: 100%; height:auto;" alt="homepage" class="light-logo" />
+                            <h4>@e.Name</h4>
+                            <bold>@e.Date.Date.ToShortDateString() - @e.Date.TimeOfDay</bold>
+                            <p>@e.Description</p>
+                        </div>
+                    </a>
                 }
-            </tbody>
-        </table>
+            }
+        }
     </div>
 </div>

@@ -22,6 +22,11 @@ namespace DWBooking.Services
         //    Users.Add(new User(Username, Password));
         //}
 
+
+        /// <summary>
+        /// returns the services list of users
+        /// </summary>
+        /// <returns></returns>
         public List<User> GetUsers()
         {
             return Users;

@@ -60,7 +60,7 @@
                                             <td><a style="color: black;" asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Date.Date.ToString("dddd, dd MMMM yyyy")</a></td>
                                             <td><a style="color: black;" asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Date.ToString("HH:mm")</a></td>
                                             <td><a style="color: black;" asp-route-id="@e.EventID" asp-page="GetParticipantsByEvent">@e.Name</a></td>
-                                            <td><a style="color: black; font-weight: normal" asp-route-id="@e.EventID" asp-page="UpdateEvent">Ret Event</a></td>
+                                            <td><a style="font-weight: normal" asp-route-id="@e.EventID" asp-page="UpdateEvent">Ret Event</a></td>
                                             <td><a style="color: red; font-weight: normal" asp-route-id="@e.EventID" asp-page="DeleteEvent">Slet event</a></td>
                                         </tr>
                                     }

@@ -57,6 +57,12 @@ namespace DWBooking.Services
             return null;
         }
 
+
+        /// <summary>
+        /// takes the client id as integer and returns the client
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>the client with the given id</returns>
         public Client GetClientById(int id)
         {
             foreach (var c in ClientList)
@@ -70,6 +76,12 @@ namespace DWBooking.Services
             return null;
         }
 
+
+        /// <summary>
+        /// Searches the service list for the client with the given string as a name or phone number
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>returns the client with the given phone number or name</returns>
         public Client SearchClientName(string name)
         {
             foreach (var client in ClientList)
@@ -83,6 +95,12 @@ namespace DWBooking.Services
             return null;
         }
 
+
+        /// <summary>
+        /// searches the service list for clients who's names contains the given string
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>returns a list of clients who's names contains the given string</returns>
         public IEnumerable<Client> SearchClientsByName(string name)
         {
             List<Client> temp = new List<Client>();
@@ -96,6 +114,12 @@ namespace DWBooking.Services
 
             return temp;
         }
+
+        /// <summary>
+        /// updates the given client in the database and service list
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
         public async Task UpdateClientAsync(Client e)
         {
             if (e != null)

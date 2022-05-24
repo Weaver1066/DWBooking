@@ -31,8 +31,8 @@ namespace DWBooking.Pages.Admin.Employee
             {
                 return Page();
             }
-            await employeeService.UpdateEventAsync(Employee);
-            return RedirectToPage("GetAllEvents");
+            await employeeService.UpdateEmployeeAsync(Employee);
+            return RedirectToPage("GetAllEmployees");
         }
     }
 }

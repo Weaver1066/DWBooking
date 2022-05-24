@@ -56,8 +56,10 @@ namespace DWBooking.Services
                             $"Hej. Dette er en påmindelse om {Events.Name} den {Events.Date.ToShortDateString()}  Mvh Diversity Works";
                         request.AddJsonBody(new
                         {
+
                             sender = "DW",
                             message = message,
+
                             recipients = new[] { new { msisdn = participants.Phone} }
                         });
                         var response = await client.ExecuteAsync(request);
@@ -66,7 +68,6 @@ namespace DWBooking.Services
             }
             Thread.Sleep(TimeInterval1);
             EventNotification();
-
         }
 
 
@@ -76,7 +77,6 @@ namespace DWBooking.Services
         /// </summary>
         public async void ClientNotification()
         {
-
             var client = new RestSharp.RestClient("https://gatewayapi.com/rest/");
             var apiToken = "RA7Ko7h0TMqK48i8ijq86k4QZO8tZfJDTTt_o8ligSLlE7DHrc0pBNqggmpRVgfX";
             client.Authenticator = new RestSharp.Authenticators
@@ -103,6 +103,7 @@ namespace DWBooking.Services
                     }
                 }
             }
+
             Thread.Sleep(TimeInterval2);
             ClientNotification();
 

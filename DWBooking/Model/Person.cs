@@ -14,7 +14,7 @@ namespace DWBooking.Model
         private string _phone;
         private string _email;
 
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         [StringLength(50)]
         public string Name
         {
@@ -24,8 +24,8 @@ namespace DWBooking.Model
             }
         }
 
-        [Required]
-        [StringLength(10)]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
+        [StringLength(8, MinimumLength = 8, ErrorMessage = "Telefon nummer skal være 8 cifre")]
         public string Phone
         {
             get { return _phone;} 
@@ -33,8 +33,9 @@ namespace DWBooking.Model
                 _phone = value;
             }
         }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         [StringLength(50)]
+        [EmailAddress(ErrorMessage = "Skriv valid email")]
         public string Email 
         {
             get { return _email; } 

@@ -13,13 +13,14 @@ namespace DWBooking.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
         public int CouncelingID { get; set; }
         public string Notes { get; set; }
-        [Required] 
+        [Required(ErrorMessage = "Feltet skal udfyldes")] 
+        //[Validation]
         public DateTime Date { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         [ForeignKey("EmployeeID")]
         public int EmployeeID { get; set; }
         public Employee Employee { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         [ForeignKey("ClientID")]
         public int ClientID { get; set; }
         public Client Client { get; set; }

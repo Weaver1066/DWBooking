@@ -12,12 +12,12 @@ namespace DWBooking.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EmployeeID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         public DateTime Age { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         [StringLength(50)]
         public string Address { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         public int Role { get; set; }
         [ForeignKey("UserID")]
         public User? User { get; set; }

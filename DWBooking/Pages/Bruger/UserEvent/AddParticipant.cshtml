@@ -29,14 +29,17 @@
                     <div class="form-group">
                         <label asp-for="Participant.Name">Navn<span class="help"></span></label>
                         <input asp-for="Participant.Name" type="text" class="form-control">
+                        <span asp-validation-for="Participant.Name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Participant.Phone">Telefon<span class="help"></span></label>
                         <input asp-for="Participant.Phone" type="text" class="form-control">
+                        <span asp-validation-for="Participant.Phone" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Participant.Email">Email<span class="help"></span></label>
                         <input asp-for="Participant.Email" type="email" class="form-control">
+                        <span asp-validation-for="Participant.Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Tilmeld" class="btn btn-primary form-control" />

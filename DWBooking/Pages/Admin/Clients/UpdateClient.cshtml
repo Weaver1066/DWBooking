@@ -29,14 +29,17 @@
                     <div class="form-group">
                         <label class="form-label">Navn<span class="help"></span></label>
                         <input type="text" asp-for="@Model.Client.Name" class="form-control">
+                        <span asp-validation-for="Client.Name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email<span class="help"></span></label>
                         <input type="email" asp-for="@Model.Client.Email" asp class="form-control">
+                        <span asp-validation-for="Client.Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Tlf<span class="help"></span></label>
                         <input type="text" asp-for="@Model.Client.Phone" class="form-control">
+                        <span asp-validation-for="Client.Phone" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary form-control">Ret</button>

@@ -39,8 +39,18 @@ namespace DWBooking.Pages.Admin.Clients
 
         public IActionResult OnPostSearchName()
         {
-            Clients = clientService.SearchClientsByName(SearchString).ToList();
-            return Page();
+            if (SearchString == null)
+            {
+                Clients = clientService.GetClients().ToList();
+                return Page();
+            }
+            else
+            {
+                Clients = clientService.SearchClientsByName(SearchString).ToList();
+                return Page();
+            }
+
         }
     }
+    
 }

@@ -12,14 +12,15 @@ namespace DWBooking.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EventID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         [StringLength(50)]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         public string Description { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
+        //[Validation]
         public DateTime Date { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         [StringLength(50)]
         public string Type { get; set; }
 

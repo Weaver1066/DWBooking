@@ -12,10 +12,10 @@ namespace DWBooking.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ParticipantID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         [ForeignKey("EventID")]
         public int EventID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Feltet skal udfyldes")]
         public Event Event { get; set; }
         public Participant():base()
         {

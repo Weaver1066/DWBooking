@@ -113,5 +113,11 @@ namespace DWBooking.Services
             return templist;
         }
 
+        public IEnumerable<Counceling> SortByDateDescending(IEnumerable<Counceling> temp)
+        {
+            return from Counceling in temp
+                orderby Counceling.Date descending
+                select Counceling;
+        }
     }
 }

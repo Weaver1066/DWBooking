@@ -39,21 +39,48 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if (@Model.Councelings != null)
-                    {
-                        foreach (var counceling in Model.Councelings)
+                        @if (@Model.Councelings != null)
                         {
-                            <tr>
-                                <td>@counceling.Client.Name</td>
-                                <td>@counceling.Employee.Name</td>
-                                <td>@counceling.Date.ToString("D")</td>
-                                <td>@counceling.Date.ToString("t")</td>
-                                <td>Rådgivning</td>
-                                <td><a asp-route-id="@counceling.CouncelingID" asp-page="/Admin/Clients/Notes">Skriv Note</a></td>
+                            foreach (var counceling in Model.Councelings)
+                            {
+                                if (counceling.Date.Date > DateTime.Now)
+                                {
+                                    <tr>
+                                        <td>@counceling.Client.Name</td>
+                                        <td>@counceling.Employee.Name</td>
+                                        <td>@counceling.Date.ToString("D")</td>
+                                        <td>@counceling.Date.ToString("t")</td>
+                                        <td>Rådgivning</td>
+                                        <td><a asp-route-id="@counceling.CouncelingID" asp-page="/Admin/Clients/Notes">Skriv Note</a></td>
 
-                            </tr>
+                                    </tr>
+                                }
+                                else if (counceling.Date.ToString("MM/dd/yyyy") == DateTime.Now.ToString("MM/dd/yyyy"))
+                                {
+                                    <tr class="table-success" style="font-weight: bold;">
+                                        <td>@counceling.Client.Name</td>
+                                        <td>@counceling.Employee.Name</td>
+                                        <td>@counceling.Date.ToString("D")</td>
+                                        <td>@counceling.Date.ToString("t")</td>
+                                        <td>Rådgivning</td>
+                                        <td><a asp-route-id="@counceling.CouncelingID" asp-page="/Admin/Clients/Notes">Skriv Note</a></td>
+
+                                    </tr>
+                                }
+                                else if (counceling.Date < DateTime.Now)
+                                {
+                                    <tr class="table-secondary" style="opacity: 0.6;">
+                                        <td>@counceling.Client.Name</td>
+                                        <td>@counceling.Employee.Name</td>
+                                        <td>@counceling.Date.ToString("D")</td>
+                                        <td>@counceling.Date.ToString("t")</td>
+                                        <td>Rådgivning</td>
+                                        <td><a asp-route-id="@counceling.CouncelingID" asp-page="/Admin/Clients/Notes">Skriv Note</a></td>
+
+                                    </tr>
+                                }
+                            }
                         }
-                    }
                     </tbody>
                 </table>
             </div>

@@ -23,16 +23,17 @@ namespace DWBooking.Pages.Admin.Events
         }
         public IActionResult OnGet()
         {
+            Date = DateTime.Now;
             return Page();
         }
 
         public async Task<IActionResult> OnPost()
         {
+            Event.Date = Convert.ToDateTime(Date.ToShortDateString() + " " + Time.ToShortTimeString());
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            Event.Date = Convert.ToDateTime(Date.ToShortDateString() + " " + Time.ToShortTimeString());
             await eventService.AddEventAsync(Event);
             return RedirectToPage("GetAllEvents");
         }

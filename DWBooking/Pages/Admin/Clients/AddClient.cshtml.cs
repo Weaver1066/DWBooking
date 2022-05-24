@@ -34,25 +34,30 @@ namespace DWBooking.Pages.Admin.Clients
         }
         public IActionResult OnGet()
         {
+            Date = DateTime.UtcNow;
             Employees = employeeService.GetEmployees().ToList();
             return Page();
         }
 
         public async Task<IActionResult> OnPostCreateCounceling()
         {
-
+            Time = Convert.ToDateTime(Request.Form[("time")]);
+            Counceling.Date = Convert.ToDateTime(Date.ToShortDateString() + " " + Time.ToShortTimeString());
             Employees = employeeService.GetEmployees().ToList();
-            Counceling.Date = Convert.ToDateTime(Counceling.Date.ToShortDateString() + " " + Time.ToShortTimeString());
-            if (clientService.CheckPhone(Client.Phone) == null)
-            {
-                     await clientService.AddClientAsync(Client);
-            }
-            Client = clientService.CheckPhone(Client.Phone);
+            if(Client.Phone != null)
+                Client = clientService.CheckPhone(Client.Phone);
             Counceling.ClientID = Client.ClientID;
+
             Employee = employeeService.GetEmployee(Employee.EmployeeID);
             Counceling.EmployeeID = Employee.EmployeeID;
-
-
+            if (clientService.CheckPhone(Client.Phone) == null && Client.Name != null)
+            {
+                await clientService.AddClientAsync(Client);
+            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
             await councelingService.AddCouncelingAsync(Counceling);
                 return RedirectToPage("../Counceling/GetAllCounceling");
 
@@ -60,8 +65,10 @@ namespace DWBooking.Pages.Admin.Clients
 
         public IActionResult OnPostNameSearch()
         {
+            Date = DateTime.UtcNow;
             Employees = employeeService.GetEmployees().ToList();
-            Client = clientService.SearchClientName(SearchString);
+            if(SearchString != null)
+                Client = clientService.SearchClientName(SearchString);
             return Page();
         }
     }

@@ -23,6 +23,7 @@ namespace DWBooking.Pages.Admin.Counceling
         public async Task<IActionResult> OnGet()
         {
             Councelings = councelingService.GetCouncelingsAndEmplyeesAndClients().Result.ToList();
+            Councelings = councelingService.SortByDateDescending(Councelings).ToList();
             return Page();
         }
         

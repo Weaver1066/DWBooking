@@ -31,7 +31,8 @@ namespace DWBooking.Pages.Admin.Employee
 
         public IActionResult OnPostAddEmployee()
         {
-            Employee.Role = Convert.ToInt32(Request.Form[("roleSelect")]);
+            if(Request.Form[("roleSelect")] != "0")
+                Employee.Role = Convert.ToInt32(Request.Form[("roleSelect")]);
             if (!ModelState.IsValid)
             {
                 return Page();

@@ -28,6 +28,10 @@ namespace DWBooking.Services
             ClientService = clientService;
         }
 
+        /// <summary>
+        /// Checks the list of events for any events in 2 days and if yes
+        /// then sends everyone who has signed up a text reminder
+        /// </summary>
         public async void EventNotification()
         {
 
@@ -65,6 +69,12 @@ namespace DWBooking.Services
             Thread.Sleep(TimeInterval1);
             EventNotification();
         }
+
+
+        /// <summary>
+        /// Checks the list of Counclings to see if there are any in 2 days and if yes sends
+        /// the client a text to remind them.
+        /// </summary>
         public async void ClientNotification()
         {
             var client = new RestSharp.RestClient("https://gatewayapi.com/rest/");

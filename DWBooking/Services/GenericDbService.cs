@@ -17,7 +17,11 @@ namespace DWBooking.Services
                 return await context.Set<T>().AsNoTracking().ToListAsync();
             }
         }
-
+        /// <summary>
+        /// Generic method to add a object to the database
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public async Task AddObjectAsync(T obj)
         {
             using (var context = new DWBookingDbContext())
@@ -26,7 +30,11 @@ namespace DWBooking.Services
                 await context.SaveChangesAsync();
             }
         }
-
+        /// <summary>
+        /// Generic method to delete a object to the database
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public async Task DeleteObjectAsync(T obj)
         {
             using (var context = new DWBookingDbContext())
@@ -35,7 +43,11 @@ namespace DWBooking.Services
                 await context.SaveChangesAsync();
             }
         }
-
+        /// <summary>
+        /// Generic method that updates a  already existing object in the database
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public async Task UpdateObjectAsync(T obj)
         {
             using (var context = new DWBookingDbContext())
@@ -44,7 +56,11 @@ namespace DWBooking.Services
                 await context.SaveChangesAsync();
             }
         }
-
+        /// <summary>
+        /// Finds and then gets a single object in the database  using its corresponding ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<T> GetObjectByIdAsync(int id)
         {
             using (var context = new DWBookingDbContext())

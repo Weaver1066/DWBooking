@@ -10,7 +10,7 @@ namespace DWBooking.MockData
     {
         private static List<Counceling> MockCouncelingList { get; set; } = new List<Counceling>()
         {
-            new Counceling("Han var rigtig dårlig", DateTime.Now, 2345, 43)
+            new Counceling("Han var rigtig dårlig", DateTime.Now, 2345, 43),
         };
 
         public static List<Counceling> GetMockCouncelings()

@@ -48,7 +48,7 @@ namespace DWBooking.Pages.Admin.Clients
                 Client = clientService.CheckPhone(Client.Phone);
             Counceling.ClientID = Client.ClientID;
 
-            Employee = employeeService.GetEmployee(Employee.EmployeeID);
+            Employee = employeeService.GetEmployee(Convert.ToInt32(Request.Form["SelectedEmployee"]));
             Counceling.EmployeeID = Employee.EmployeeID;
             if (clientService.CheckPhone(Client.Phone) == null && Client.Name != null)
             {

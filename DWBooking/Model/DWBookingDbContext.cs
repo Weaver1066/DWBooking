@@ -21,6 +21,11 @@ namespace DWBooking.Model
         public DbSet<Client> Clients { get; set; }
         public DbSet<EventEmployees> EventEmployees { get; set; }
         public DbSet<User> Users { get; set; }
+
+        /// <summary>
+        /// Makes Composite Key for the Table EventEmployees
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<EventEmployees>()

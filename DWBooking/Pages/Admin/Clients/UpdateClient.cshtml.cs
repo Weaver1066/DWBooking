@@ -24,7 +24,7 @@ namespace DWBooking.Pages.Admin.Clients
         }
         public async Task<IActionResult> OnPost(int id)
         {
-            Client = ClientService.GetClientById(id);
+            Client.ClientID = id;
             if (!ModelState.IsValid)
             {
                 return Page();

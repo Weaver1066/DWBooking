@@ -13,19 +13,16 @@ namespace DWBooking.Services
         private EventService Eventservice;
         private ParticipantService ParticipantService;
         private CouncelingService CouncelingService;
-        private ClientService ClientService;
 
         private List<Event> EventList { get; set; }
         private List<Participant> ParticipantList { get; set; }
         private List<Counceling> CouncelingList { get; set; }
-        private List<Client> ClientList { get; set; }
 
-        public NotificationService(EventService eventService, ParticipantService participantService, CouncelingService councelingService, ClientService clientService)
+        public NotificationService(EventService eventService, ParticipantService participantService, CouncelingService councelingService)
         {
             Eventservice = eventService;
             ParticipantService = participantService;
             CouncelingService = councelingService;
-            ClientService = clientService;
         }
 
         /// <summary>

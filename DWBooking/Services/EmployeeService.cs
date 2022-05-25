@@ -57,6 +57,8 @@ namespace DWBooking.Services
                         i.Name = e.Name;
                         i.Address = e.Address;
                         i.Age = e.Age;
+                        i.Phone = e.Phone;
+                        i.Email = e.Email;
                     }
                 }
                 await DbService.UpdateObjectAsync(e);

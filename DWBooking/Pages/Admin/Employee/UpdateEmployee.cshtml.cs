@@ -27,6 +27,7 @@ namespace DWBooking.Pages.Admin.Employee
 
         public async Task<IActionResult> OnPost(int id)
         {
+            Employee.EmployeeID = id;
             if (!ModelState.IsValid)
             {
                 return Page();

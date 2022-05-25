@@ -30,10 +30,10 @@ namespace DWBooking.Pages.Bruger.UserEvent
         public async Task<IActionResult> OnPost(int id)
         {
             Participant.EventID = id;
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
             await participantService.AddParticipantAsync(Participant);
             return RedirectToPage("GetEvent");
         }

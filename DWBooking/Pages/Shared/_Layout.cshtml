@@ -130,7 +130,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         @{
-                            if (Context.User.Identity.Name == "admin" || Context.User.Identity.Name == "rådgiver")
+                            if (Context.User.Identity.IsAuthenticated)
                             {
                         <li class="sidebar-item" style="border-top: 3px solid #f2f4f5;">
 
@@ -217,7 +217,7 @@
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
         <main role="main" class="pb-3">
-            <div class="page-wrapper" style="height: 1080px;">
+            <div class="page-wrapper" style="min-height: 1080px;">
                 @RenderBody()
             </div>
         </main>
